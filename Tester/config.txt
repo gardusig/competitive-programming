@@ -1,0 +1,4 @@
+code_path: "/home/gardusi/Dropbox/Programming/Training/main.cpp"
+input_path: "/home/gardusi/Downloads/input_output/J/input/"
+output_path: "/home/gardusi/Downloads/input_output/J/output/"
+timeout: "1"
