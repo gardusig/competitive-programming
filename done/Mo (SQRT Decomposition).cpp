@@ -7,12 +7,6 @@ int ans[N], f[N], v[N];
 int block_size, current;
 vector< pair<ii, int> > mo;
 
-//~ bool cmp (const Query &x, const Query &y) {
-	//~ if ((x.l / block_size) == (y.l / block_size))
-		//~ return ((x.l / block_size) & 1) ? (x.r < y.r) : (x.r > y.r);
-	//~ return (x.l / b) < (y.l / b);
-//~ }
-
 bool compare (const pair<ii, int> a, const pair<ii, int> b) {
 	if (a.first.first / block_size == b.first.first / block_size)
 		return a.first.second < b.first.second;
