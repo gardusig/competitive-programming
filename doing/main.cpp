@@ -1,44 +1,59 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void update(const auto &idx, auto &bit) {
-	for (int i = idx; i < int(bit.size()); i += i & (-i))
-		++bit[i];
-}
-
-int query(const auto &idx, const auto &bit) {
-	int ans = 0;
-	for (int i = idx; i > 0; i -= i & (-i))
-		ans += bit[i];
-	return ans;
+void build(auto &dp) {
+	const int N = 112;
+	vector< vector<bool> > win(N);
+	for (int i = 0; i < N; ++i)
+		win[i] = vector<bool>(N, false);
+	for (int i = 0; i < N; ++i)
+		for (int j = 0; j < N; ++j)
+			if (!win[i][j])
+				for (int k = 1; k < N; ++k) {
+					if (i + k < N)
+						win[i + k][j] = true;
+					if (j + k < N)
+						win[i][j + k] = true;
+					if (i + k < N and j + k < N)
+						win[i + k][j + k] = true;
+				}
+	for (int i = 0; i < 10; ++i) {
+		for (int j = 0; j < 10; ++j)
+			cout << win[i][j] << " ";
+		puts("");
+	}
+	dp.resize(N);
+	for (int i = 0; i < N; ++i)
+		dp[i] = vector<int>(N);
+	for (int i = 1; i < N; ++i)
+		for (int j = 1; j < N; ++j)
+			for (int k = 1; k < N; ++k) {
+				int current = 0;
+				if (i - k >= 0)
+					current |= (1 << win[i - k][j]);
+				if (j - k >= 0)
+					current |= (1 << win[i][j - k]);
+				if (i - k >= 0 and j - k >= 0)
+					current |= (1 << win[i - k][j - k]);
+				for (int l = 0; l < 3; ++l)
+					if (!(current & (1 << l))) {
+						dp[i][j] = l;
+						break;
+					}
+			}
 }
 
 int main() {
-	scanf("%*d %*d");
-	vector<int> qtd(2);
-	for (int i = 0; i < 2; ++i)
-		scanf("%d", &qtd[i]);
-	long long int ans = 1LL + (1LL * qtd[0] * qtd[1]);
-	for (int i = 0; i < 2; ++i) {
-		vector<int> other;
-		vector< pair<int, int> > v;
-		for (int j = 0; j < qtd[i]; ++j) {
-			int x, y; scanf("%d %d", &x, &y);
-			v.push_back({-x, y});
-			other.push_back(y);
-		}
-		sort(v.begin(), v.end());
-		sort(other.begin(), other.end());
-		unordered_map<int, int> convert;
-		vector<int> bit(int(v.size()) + 5, 0);
-		for (int i = 0, diff = 0; i < int(other.size()); ++i)
-			if (!i or other[i] != other[i-1])
-				convert[other[i]] = ++diff;
-		for (int i = 0; i < int(v.size()); ++i) {
-			int idx = convert[v[i].second];
-			ans += 1LL + query(idx, bit);
-			update(idx, bit); 
-		}
+	vector< vector<int> > dp;
+	build(dp);
+	int n; scanf("%d", &n);
+	int ans = 0;
+	while (n-- > 0) {
+		int x, y; scanf("%d %d", &x, &y);
+		if (x == y)
+			return printf("%s\n", "Y"), 0;
+		else
+			ans ^= dp[x][y];
 	}
-	return printf("%lld\n", ans), 0;
+	return printf("%s\n", (ans > 0) ? "Y" : "N"), 0;
 }
