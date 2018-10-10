@@ -2,21 +2,12 @@
 #include <stdlib.h>
 
 int main() {
-	double A, B, C; scanf("%lf %lf %lf", &A, &B, &C);
-	if (A > B) {
-		int other = A;
-		A = B;
-		B = other;
+	int n;
+	scanf("%d", &n);
+	int i = 1;
+	while (i <= n) {
+		printf("%d / %d\n", 1, (i * 4 - 3));
+		i = i + 1;
 	}
-	if (B > C) {
-		int other = B;
-		B = C;
-		C = other;
-	}
-	if (A > B) {
-		int other = A;
-		A = B;
-		B = other;
-	}
-	printf("A: %.1lf, B: %.1lf, C: %.1lf\n", A, B, C);
+	return 0;
 }
