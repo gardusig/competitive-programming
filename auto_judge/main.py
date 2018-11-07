@@ -29,7 +29,7 @@ def build_languages():
 		},
 		'c++': {
 			'suffix': 'cpp',
-			'compile': ['g++', '-std=c++11', '-O4', '-lm'],
+			'compile': ['g++', '-std=c++11', '-O2', '-lm', '-Wall'],
 			'run': './',
 		},
 		'java': {

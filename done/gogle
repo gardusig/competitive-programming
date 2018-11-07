@@ -1,0 +1,88 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+const int N = 112345;
+
+class node {
+private:
+	node() {}
+	long long value;
+	node *left, *right;
+	int lo, hi, lazy, mid;
+	void propagate() {
+		this->value += 1LL * (this->hi - this->lo + 1) * this->lazy;
+		if (this->lo != this->hi) {
+			if (this->left == NULL)
+				this->left = new node(this->lo, this->mid);
+			this->left->lazy += this->lazy;
+			if (this->right == NULL)
+				this->right = new node(this->mid + 1, this->hi);
+			this->right->lazy += this->lazy;
+		}
+		this->lazy = 0;
+	}
+public:
+	node(const int &lo, const int &hi) {
+		this->lo = lo, this->hi = hi;
+		this->value = this->lazy = 0;
+		this->left = this->right = NULL;
+		this->mid = lo + ((hi - lo) >> 1);
+	}
+	void update(const int &lo, const int &hi, const int &value) {
+		this->propagate();
+		if (this->lo > hi or this->hi < lo)
+			return;
+		if (this->lo >= lo and this->hi <= hi) {
+			this->lazy += value;
+			this->propagate();
+			return;
+		}
+		this->left->update(lo, hi, value);
+		this->right->update(lo, hi, value);
+		this->value = this->left->value + this->right->value;
+	}
+	int query(const int &k) {
+		this->propagate();
+		if (this->lo == this->hi)
+			return this->lo;
+		int need = k;
+		this->right->propagate();
+		if (this->right->value >= need)
+			return this->right->query(need);
+		need -= this->right->value;
+		return this->left->query(need);
+	}
+	void clear() {
+		if (this->left != NULL)
+			this->left->clear();
+		if (this->right != NULL)
+			this->right->clear();
+		delete(this);
+	}
+};
+
+int main () {
+	node *root;
+	int tests; scanf("%d", &tests);
+	vector<int> x(N), y(N), z(N), a(3), b(3), c(3), m(3);
+	for (int test = 1; test <= tests; ++test) {
+		int n, q; scanf("%d %d", &n, &q);
+		scanf("%d %d %d %d %d %d", &x[0], &x[1], &a[0], &b[0], &c[0], &m[0]);
+		scanf("%d %d %d %d %d %d", &y[0], &y[1], &a[1], &b[1], &c[1], &m[1]);
+		scanf("%d %d %d %d %d %d", &z[0], &z[1], &a[2], &b[2], &c[2], &m[2]);
+		for (int i = 2; i < n; ++i) {
+			x[i] = ((1LL * a[0] * x[i - 1]) + (1LL * b[0] * x[i - 2]) + c[0]) % m[0];
+			y[i] = ((1LL * a[1] * y[i - 1]) + (1LL * b[1] * y[i - 2]) + c[1]) % m[1];
+			z[i] = ((1LL * a[2] * z[i - 1]) + (1LL * b[2] * z[i - 2]) + c[2]) % m[2];
+		}
+		root = new node(0, 1123456789);
+		for (int i = 0; i < n; ++i)
+			root->update(min(x[i], y[i]) + 1, max(x[i], y[i]) + 1, 1);
+		long long ans = 0;
+		for (int i = 0; i < q; ++i)
+			ans += 1LL * root->query(z[i] + 1) * (i + 1);
+		root->clear();
+		printf("Case #%d: %lld\n", test, ans);
+	}
+	return 0;
+}

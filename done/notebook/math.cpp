@@ -55,13 +55,8 @@ ll exponentiate (const ll &x, const ll &y, const ll &MOD) {
 }
 
 //~ comb(x, y) = comb(x - 1, y) + comb(x - 1, y - 1)
-ll combination (const ll &x, const ll &y, const ll &MOD) {
-	if (x < 1 or y < 1 or x < y)
-		return 0;
-	ll num = fat[x];
-	ll den = (inv[y] * inv[x - y]) % MOD;
-	ll ans = (num * den) % MOD;
-	return ans;
+ll combination (const ll &n, const ll &k, const ll &MOD) {
+	return (1LL * fat[n] * exponentiate((1LL * fat[k] * fat[n - k]) % MOD, MOD - 2)) % MOD;
 }
 
 void aritmetic_progression (const ll &a1, const ll &n, const ll &r) {
@@ -80,6 +75,23 @@ double simple_interest (const double &capital, const double &percentage, const d
 
 double compound_interest (const double &capital, const double &percentage, const double &qtd) {
 	return capital * pow(1.0 + percentage, qtd);
+}
+
+vector< vector<int> > build_combination() {
+	vector< vector<int> > ans;
+	ans.resize(MAX_SIZE);
+	for (int i = 0; i < int(ans.size()); ++i)
+		ans[i].resize(MAX_SIZE);
+	for (int i = 0; i < MAX_SIZE; ++i) {
+		ans[i][0] = 1;
+		for (int j = 1; j < MAX_SIZE; ++j) {
+			if (j > i)
+				ans[i][j] = 0;
+			else
+				ans[i][j] = (ans[i-1][j-1] + ans[i-1][j]) % MOD;
+		}
+	}
+	return ans;
 }
 
 int main () {

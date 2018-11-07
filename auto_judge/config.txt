@@ -1,4 +1,4 @@
-code_path: "/home/gardusi/Dropbox/Programming/Training/main.cpp"
-input_path: "/home/gardusi/Downloads/input_output/J/input/"
-output_path: "/home/gardusi/Downloads/input_output/J/output/"
+code_path: "/home/gardusi/Dropbox/competitive_programming/doing/main.cpp"
+input_path: "/home/gardusi/Dropbox/uberhub/medio/duplas/input/"
+output_path: "/home/gardusi/Dropbox/uberhub/medio/duplas/output/"
 timeout: "1"
