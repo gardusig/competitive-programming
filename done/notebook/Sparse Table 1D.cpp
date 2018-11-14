@@ -8,7 +8,7 @@ void build_sparse_table() {
 	for (int i = 0; i < n; ++i)
 		st[i][0] = v[i];
 	for (int j = 1; j < M; ++j)
-		for (int i = 0; i + (1 << j) < N; ++i)
+		for (int i = 0; i + (1 << j) <= N; ++i)
 			st[i][j] = min(st[i][j-1], st[i + (1 << (j - 1))][j-1]);
 }
 
