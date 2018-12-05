@@ -1,23 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 712;
-
 class edge {
 private:
-	edge(const int& to, const int& flow, const int& capacity) {
+	edge(const auto &to, const auto &flow, const auto &capacity) {
 		this->to = to, this->flow = flow, this->capacity = capacity;
 	}
 public:
 	int to, flow, capacity;
-	static void add(const int& x, const int& y, const int& capacity, vector< vector<int> >& g, vector<edge>& edges) {
+	static void add(const auto &x, const auto &y, const auto &capacity, auto &g, auto &edges) {
 		g[x].push_back(int(edges.size())), edges.push_back(edge(y, 0, capacity));
 		g[y].push_back(int(edges.size())), edges.push_back(edge(x, 0, 0));
 	}
 };
 
 class ford_fulkerson {
-//~ complexity: (max_flow * edges)
 private:
 	ford_fulkerson() {}
 	static int dfs(const int& i, const int& flow, const int& sink, const vector< vector<int> >& g, vector<edge>& edges, vector<int>& seen, int& current) {
@@ -43,7 +40,6 @@ public:
 };
 
 class edmonds_karp {
-//~ complexity: (vertexes * edges * edges)
 private:
 	edmonds_karp() {}
 	static int bfs(const int& source, const int& sink, const vector< vector<int> >& g, vector<edge>& edges, vector<int>& seen, vector<int>& parent, int& current) {
@@ -82,11 +78,10 @@ public:
 };
 
 class dinic {
-//~ complexity: (vertexes * vertexes * edges)
 private:
 	dinic() {}
-	static int bfs(const int& source, const int& sink, const vector< vector<int> >& g, const vector<edge>& edges, vector<int>& level) {
-		for (int i = 0; i < N; ++i)
+	static int bfs(const auto &source, const auto &sink, const auto &g, const auto &edges, auto &level, const auto &vertexes) {
+		for (int i = 0; i < vertexes; ++i)
 			level[i] = INT_MAX;
 		queue<int> q;
 		level[source] = 0, q.push(source);
@@ -98,7 +93,7 @@ private:
 		}
 		return level[sink] < INT_MAX;
 	}
-	static int dfs(const int& i, const int& sink, const int& flow, const vector< vector<int> >& g, vector<edge>& edges, const vector<int>& level, vector<int>& start) {
+	static int dfs(const auto &i, const auto &sink, const auto &flow, const auto &g, auto &edges, const auto &level, auto &start) {
 		if (i == sink)
 			return flow;
 		while (start[i] < int(g[i].size())) {
@@ -112,73 +107,44 @@ private:
 		return 0;
 	}
 public:
-	static int solve(const int& source, const int& sink, const vector< vector<int> >& g, vector<edge>& edges) {
+	static int solve(const auto &source, const auto &sink, const auto &g, auto &edges, const auto &vertexes) {
 		int ans = 0;
-		vector<int> level(N, 0), start(N, 0);
-		while (bfs(source, sink, g, edges, level)) {
-			for (int i = 0; i < N; ++i)
+		vector<int> level(vertexes), start(vertexes);
+		while (bfs(source, sink, g, edges, level, vertexes) == true) {
+			for (int i = 0; i < vertexes; ++i)
 				start[i] = 0;
-			while (int i = dfs(source, sink, INT_MAX, g, edges, level, start))
-				ans += i;
+			for (int current_flow = INT_MAX; current_flow > 0; ans += current_flow)
+				current_flow = dfs(source, sink, INT_MAX, g, edges, level, start);
 		}
 		return ans;
 	}
 };
 
+bool valid(const auto &a, const auto &b, const auto &s) {
+	long long kappa = 1LL * (a.first - b.first) * (a.first - b.first);
+	long long keepo = 1LL * (a.second - b.second) * (a.second - b.second);
+	return sqrt(kappa + keepo) < s;
+}
+
 int main() {
-	int n, m, games;
+	int n, m, s; cin >> n >> m >> s; s -= 10;
+	vector< pair< int, int > > beagles(n);
+	for (int i = 0; i < n; ++i)
+		cin >> beagles[i].first >> beagles[i].second;
+	vector< pair< pair< int, int>, int > > bowls(m);
+	for (int i = 0; i < m; ++i)
+		cin >> bowls[i].first.first >> bowls[i].first.second >> bowls[i].second;
+	int source = 0, sink = 1;
+	int vertexes = n + m + 2;
 	vector<edge> edges;
-	vector< vector<int> > g(N);
-	int matches[N][N], points[N];
-	while (scanf("%d %d %d", &n, &m, &games) == 3) {
-		if (!n and !m and !games)
-			break;
-		edges.clear();
-		for (int i = 0; i < N; ++i)
-			g[i].clear();
-		for (int i = 0; i < n; ++i) {
-			points[i] = 0;
-			for (int j = 0; j < n; ++j)
-				if (i != j)
-					matches[i][j] = m;
-		}
-		while (games-- > 0) {
-			int x, y; char c; scanf("%d %c %d", &x, &c, &y);
-			--matches[x][y];
-			--matches[y][x];
-			++points[y];
-			if (c == '<')
-				++points[y];
-			else
-				++points[x];
-		}
-		for (int i = 1; i < n; ++i)
-			if (matches[0][i] > 0)
-				points[0] += (matches[0][i] << 1),
-				matches[0][i] = matches[i][0] = 0;
-		int source = n;
-		int sink = n + 1;
-		bool valid = true;
-		int total = points[0] - 1;
-		for (int i = 1; i < n; ++i) {
-			if (total - points[i] < 0)
-				valid = false;
-			else
-				edge::add(i, sink, total - points[i], g, edges);
-		}
-		int need = 0;
-		int current = sink;
-		for (int i = 1; i < n; ++i)
-			for (int j = i + 1; j < n; ++j)
-				if (matches[i][j] > 0)
-					++current,
-					matches[i][j] <<= 1,
-					need += matches[i][j],
-					edge::add(current, i, matches[i][j], g, edges),
-					edge::add(current, j, matches[i][j], g, edges),
-					edge::add(source, current, matches[i][j], g, edges);
-		valid &= (dinic::solve(source, sink, g, edges) == need);
-		printf("%s\n", valid ?  "Y" : "N");
-	}
-	return 0;
+	vector< vector< int > > g(vertexes);
+	for (int i = 0; i < n; ++i)
+		edge::add(source, 2 + i, 1, g, edges);
+	for (int j = 0; j < m; ++j)
+		edge::add(2 + n + j, sink, bowls[j].second, g, edges);
+	for (int i = 0; i < n; ++i)
+		for (int j = 0; j < m; ++j)
+			if (valid(beagles[i], bowls[j].first, s) == true)
+				edge::add(2 + i, 2 + n + j, 1, g, edges);
+	return cout << (dinic::solve(source, sink, g, edges, vertexes) == n ? "YES" : "NO") << '\n', 0;
 }

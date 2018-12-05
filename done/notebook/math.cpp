@@ -1,11 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> number_factorize(const auto &x, const auto &divisors) {
-	vector<int> v;
-	for (auto i = x; i > 1; i /= divisors[i])
-		v.push_back(divisors[i]);
-	return v;
+vector< int > factorize(const auto &n, const auto &div) {
+	vector< int > ans;
+	for (int i = n; i > 1; i /= div[i])
+		ans.push_back(div[i]);
+	//~ set< int > s(ans.begin(), ans.end());
+	//~ ans.assign(s.begin(), s.end());
+	return ans;
 }
 
 int divisors_count(const auto &x) {
