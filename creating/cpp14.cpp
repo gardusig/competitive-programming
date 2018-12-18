@@ -1,74 +1,53 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int MAX_SIZE = 512345;
-
-void optmize_io() {
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);
-	cout.tie(0);
-}
-
-vector< int > build_divisors(const auto &n) {
-	vector< int > v(n);
+vector< vector< int > > build_sparse_table(const auto &v) {
+	int n = int(v.size());
+	int m = log2(n) + 5;
+	vector< vector< int > > st(n);
 	for (int i = 0; i < n; ++i)
-		v[i] = i;
-	for (int i = 2; i < n; ++i)
-		if (v[i] == i)
-			for (int j = i + i; j < n; j += i)
-				if (v[j] == j)
-					v[j] = i;
-	return v;
+		st[i] = vector< int >(m);
+	for (int i = 0; i < n; ++i)
+		st[i][0] = v[i];
+	for (int j = 1; j < m; ++j)
+		for (int i = 0; i + (1 << j) <= n; ++i)
+			st[i][j] = max(st[i][j-1], st[i + (1 << (j - 1))][j-1]);
+	return st;
 }
 
-vector< int > factorize(const auto &n, const auto &div) {
-	vector< int > ans;
-	for (int i = n; i > 1; i /= div[i])
-		ans.push_back(div[i]);
-	set< int > s(ans.begin(), ans.end());
-	ans.assign(s.begin(), s.end());
-	return ans;
+int query_sparse_table(const auto &x, const auto &y, const auto &st) {
+	int dist = y - x + 1;
+	int z = 31 - __builtin_clz(dist);
+	return max(st[x][z], st[x + dist - (1 << z)][z]);
 }
 
 int main() {
-	optmize_io();
-	int n, t; cin >> n >> t;
-	auto divisors = build_divisors(MAX_SIZE);
-	vector< vector< int > > factors(n);
-	for (int i = 0; i < n; ++i) {
-		int x; cin >> x;
-		factors[i] = factorize(x, divisors);
+	ios_base::sync_with_stdio(0);
+	cin.tie(0), cout.tie(0);
+	int mx = 0;
+	int n; cin >> n;
+	vector< int > v(n);
+	for (int i = 0; i < n; i += 1)
+		cin >> v[i],
+		mx = max(mx, v[i]);
+	auto st = build_sparse_table(v);
+	for (int i = 0; i < n;) {
+		if (v[i] == mx) {
+			i += 1;
+			continue;
+		}
+		int lo = i, hi = n - 1;
+		while (lo <= hi) {
+			const int mid = lo + ((hi - lo) >> 1);
+			if (query_sparse_table(i, mid, st) > v[i])
+				hi = mid - 1;
+			else
+				lo = mid + 1;
+		}
+		int l = i, r = lo - 1;
+		if ((r - l + 1) & 1)
+			return cout << "NO" << '\n', 0;
+		i = lo;
 	}
-	int size = 0;
-	long long ans = 0;
-	vector< bool > stock(n, false);
-	vector< int > have(MAX_SIZE, 0);
-	while (t-- > 0) {
-		int x; cin >> x; x -= 1;
-		if (stock[x] == true)
-			for (const auto &i: factors[x])
-				have[i] -= 1;
-		int incompatible = 0;
-		for (int mask = 1; mask < (1 << int(factors[x].size())); mask += 1) {
-			int current = 1, qtd = 0;
-			for (int pos = 0; pos < int(factors[x].size()); pos += 1)
-				if (mask & (1 << pos))
-					qtd += 1,
-					current *= factors[x][pos];
-			incompatible += ((qtd & 1) ? +1 : -1) * have[current];
-		}
-		if (stock[x] == true) {
-			ans -= (size - 1 - incompatible),
-			size -= 1;
-		}
-		else {
-			ans += (size - incompatible),
-			size += 1;
-			for (const auto &i: factors[x])
-				have[i] += 1;
-		}
-		stock[x] = !stock[x];
-		cout << ans << '\n';
-	}
-	return 0;
+	return cout << "YES" << '\n', 0;
 }
