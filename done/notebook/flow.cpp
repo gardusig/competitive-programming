@@ -3,15 +3,19 @@ using namespace std;
 
 class edge {
 private:
-	edge(const auto &to, const auto &flow, const auto &capacity) {
-		this->to = to, this->flow = flow, this->capacity = capacity;
-	}
+  edge(const auto &to, const auto &flow, const auto &capacity) {
+    this->to = to;
+    this->flow = flow;
+    this->capacity = capacity;
+  }
 public:
-	int to, flow, capacity;
-	static void add(const auto &x, const auto &y, const auto &capacity, auto &g, auto &edges) {
-		g[x].push_back(int(edges.size())), edges.push_back(edge(y, 0, capacity));
-		g[y].push_back(int(edges.size())), edges.push_back(edge(x, 0, 0));
-	}
+  int to, flow, capacity;
+  static void add(const auto &x, const auto &y, const auto &capacity, auto &g, auto &edges) {
+    g[x].push_back(int(edges.size()));
+    edges.push_back(edge(y, 0, capacity));
+    g[y].push_back(int(edges.size()));
+    edges.push_back(edge(x, 0, 0));
+  }
 };
 
 class ford_fulkerson {
@@ -79,45 +83,52 @@ public:
 
 class dinic {
 private:
-	dinic() {}
-	static int bfs(const auto &source, const auto &sink, const auto &g, const auto &edges, auto &level, const auto &vertexes) {
-		for (int i = 0; i < vertexes; ++i)
-			level[i] = INT_MAX;
-		queue<int> q;
-		level[source] = 0, q.push(source);
-		while (!q.empty()) {
-			int i = q.front(); q.pop();
-			for (const int& j : g[i])
-				if (level[edges[j].to] > level[i] + 1 and edges[j].flow < edges[j].capacity)
-					level[edges[j].to] = level[i] + 1, q.push(edges[j].to);
-		}
-		return level[sink] < INT_MAX;
-	}
-	static int dfs(const auto &i, const auto &sink, const auto &flow, const auto &g, auto &edges, const auto &level, auto &start) {
-		if (i == sink)
-			return flow;
-		while (start[i] < int(g[i].size())) {
-			int j = g[i][start[i]++];
-			if (level[edges[j].to] == level[i] + 1 and edges[j].flow < edges[j].capacity)
-				if (int nxt = dfs(edges[j].to, sink, min(flow, edges[j].capacity - edges[j].flow), g, edges, level, start)) {
-					edges[j].flow += nxt, edges[j ^ 1].flow -= nxt;
-					return nxt;
-				}
-		}
-		return 0;
-	}
+  dinic() {}
+  static int bfs(const auto &source, const auto &sink, const auto &g, const auto &edges, auto &level, const auto &vertexes) {
+    fill(level.begin(), level.end(), INT_MAX);
+    queue< int > q;
+    level[source] = 0;
+    q.push(source);
+    while (q.empty() == false) {
+      int i = q.front(); 
+      q.pop();
+      for (const auto &j : g[i]) {
+        if (level[edges[j].to] > level[i] + 1 and edges[j].flow < edges[j].capacity) {
+          level[edges[j].to] = level[i] + 1;
+          q.push(edges[j].to);
+        }
+      }
+    }
+    return level[sink] < INT_MAX;
+  }
+  static int dfs(const auto &i, const auto &sink, const auto &flow, const auto &g, auto &edges, const auto &level, auto &start) {
+    if (i == sink) {
+      return flow;
+    }
+    while (start[i] < int(g[i].size())) {
+      int j = g[i][start[i]++];
+      if (level[edges[j].to] == level[i] + 1 and edges[j].flow < edges[j].capacity) {
+        if (int nxt = dfs(edges[j].to, sink, min(flow, edges[j].capacity - edges[j].flow), g, edges, level, start) > 0) {
+          edges[j].flow += nxt;
+          edges[j ^ 1].flow -= nxt;
+          return nxt;
+        }
+      }
+    }
+    return 0;
+  }
 public:
-	static int solve(const auto &source, const auto &sink, const auto &g, auto &edges, const auto &vertexes) {
-		int ans = 0;
-		vector<int> level(vertexes), start(vertexes);
-		while (bfs(source, sink, g, edges, level, vertexes) == true) {
-			for (int i = 0; i < vertexes; ++i)
-				start[i] = 0;
-			for (int current_flow = INT_MAX; current_flow > 0; ans += current_flow)
-				current_flow = dfs(source, sink, INT_MAX, g, edges, level, start);
-		}
-		return ans;
-	}
+  static int solve(const auto &source, const auto &sink, const auto &g, auto &edges, const auto &vertexes) {
+    int ans = 0;
+    vector< int > level(vertexes), start(vertexes);
+    while (bfs(source, sink, g, edges, level, vertexes) == true) {
+      fill(start.begin(), start.end(), 0);
+      while (int current_flow = dfs(source, sink, INT_MAX, g, edges, level, start) > 0) {
+        ans += current_flow;
+      }
+    }
+    return ans;
+  }
 };
 
 bool valid(const auto &a, const auto &b, const auto &s) {
