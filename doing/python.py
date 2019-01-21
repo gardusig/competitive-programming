@@ -9,9 +9,9 @@ sys.stdout = _OUTPUT_BUFFER
 
 @atexit.register
 def write():
-    sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
+  sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
 
 def main():
-	return 0
+  return 0
 
 main()
