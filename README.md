@@ -1,2 +1,3 @@
 # Profiles
-* [Codeforces profile](https://codeforces.com/profile/gustavo.gardusi)
+* [Codechef](https://www.codechef.com/users/gustavogardusi)
+* [Codeforces](https://codeforces.com/profile/gustavo.gardusi)
