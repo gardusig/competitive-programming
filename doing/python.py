@@ -12,6 +12,18 @@ def write():
   sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
 
 def main():
+  n = int(input())
+  dp = [0 for i in range(n + 5)]
+  for i in range(1, n + 5):
+    current = ((i + 1) * i) // 2
+    while current <= n:
+      dp[current] += 1
+      current += i
+  ans = 0
+  for i in range(1, n + 5):
+    if n % i == 0:
+      ans += dp[i] * dp[n // i]
+  print(ans)
   return 0
 
 main()
