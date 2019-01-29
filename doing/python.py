@@ -11,19 +11,16 @@ sys.stdout = _OUTPUT_BUFFER
 def write():
   sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
 
+def node:
+  def __init__(self):
+    self.nxt = []
+  node *nxt
+
 def main():
-  n = int(input())
-  dp = [0 for i in range(n + 5)]
-  for i in range(1, n + 5):
-    current = ((i + 1) * i) // 2
-    while current <= n:
-      dp[current] += 1
-      current += i
-  ans = 0
-  for i in range(1, n + 5):
-    if n % i == 0:
-      ans += dp[i] * dp[n // i]
-  print(ans)
+  l, d, n = list(map(int, input().split(' ')))
+  for i in range(d):
+    s = input()
+
   return 0
 
 main()
