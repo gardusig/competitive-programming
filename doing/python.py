@@ -1,23 +1,17 @@
+import atexit
+import io
 import sys
 
-sys.stdin = open('aztec.in', 'r')
-sys.stdout = open('aztec.out', 'w')
+_INPUT_LINES = sys.stdin.read().splitlines()
+input = iter(_INPUT_LINES).__next__
+_OUTPUT_BUFFER = io.StringIO()
+sys.stdout = _OUTPUT_BUFFER
 
-def solve(n):
-  sum = 1
-  i = 1
-  while True:
-    i += 1
-    current = 0
-    current += ((i + 1) * i) // 2
-    current += (i * (i - 1)) // 2
-    if sum + sum + current > n:
-      return i - 1
-    sum += current
+@atexit.register
+def write():
+  sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
 
 def main():
-  n = int(input())
-  print(solve(n))
   return 0
 
 main()
