@@ -74,13 +74,6 @@ namespace _2D {
   bool point_inside_circle(const pv &P, const circle &_circle);
 }
 
-int main() {
-  ios_base::sync_with_stdio(0);
-  cin.tie(0);
-  cout.tie(0);
-  return 0;
-}
-
 pv::pv() {}
 
 pv::pv(const double &x, const double &y) {
@@ -377,4 +370,11 @@ double _2D::circle_outside_triangle_radius(const pv &A, const pv &B, const pv &C
 
 bool _2D::point_inside_circle(const pv &P, const circle &_circle) {
   return _2D::norm(P - _circle.C) <= _circle.r;
+}
+
+int main() {
+  ios_base::sync_with_stdio(0);
+  cin.tie(0);
+  cout.tie(0);
+  return 0;
 }
