@@ -1,62 +1,97 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-std::mt19937 rng(int(std::chrono::steady_clock::now().time_since_epoch().count()));
+class node {
+public:
 
-const int MOD = 1000000007;
+  int lo;
+  int hi;
+  int value;
+  node *left;
+  node *right;
 
-vector< int > build(const auto &n, const auto &x0, const auto &y0, const auto &c, const auto &d, const auto &ex, const auto &ey, const auto &f) {
-  vector< int > v(n), x(n), y(n);
-  x[0] = x0;
-  y[0] = y0;
-  v[0] = (x[0] + y[0]) % f;
-  for (int i = 1; i < n; i += 1) {
-    x[i] = ((1LL * c * x[i - 1]) + (1LL * d * y[i - 1]) + ex) % f;
-    y[i] = ((1LL * d * x[i - 1]) + (1LL * c * y[i - 1]) + ey) % f;
-    v[i] = (x[i] + y[i]) % f;
+  node(const auto &lo, const auto &hi) {
+    this->lo = lo;
+    this->hi = hi;
+    this->value = 0;
+    this->left = NULL;
+    this->right = NULL;
+    if (this->lo != this->hi) {
+      const auto mid = this->lo + ((this->hi - this->lo) / 2);
+      this->left = new node(this->lo, mid);
+      this->right = new node(mid + 1, this->hi);
+    }
   }
-  return v;
-}
 
-int exp(const auto &n, const auto &k) {
-  if (k == 0) {
-    return 1;
+  void insert(const auto &idx) {
+    if (this->lo > idx or this->hi < idx) {
+      return;
+    }
+    if (this->lo == idx and this->hi == idx) {
+      this->value += 1;
+      return;
+    }
+    this->left->insert(idx);
+    this->right->insert(idx);
+    this->value = this->left->value + this->right->value;
   }
-  int ans = exp(n, k / 2);
-  ans = (1LL * ans * ans) % MOD;
-  if (k & 1) {
-    ans = (1LL * ans * n) % MOD;
-  }
-  return ans;
-}
 
-vector< int > build_pot(const auto &n, const auto &k) {
-  vector< int > v(n + 5);
-  v[1] = k;
-  for (int i = 2; i <= n; i += 1) {
-    v[i] = (1LL * (exp(i, k + 1) - 1) * exp(i - 1, MOD - 2) - 1 + MOD) % MOD;
-    v[i] = (v[i - 1] + v[i]) % MOD;
+  int ask(const auto &need) {
+    cout << this->lo << ' ' << this->hi << ' ' << this->value << endl;
+    if (this->value < need) {
+      return -1;
+    }
+    if (this->lo == this->hi) {
+      return this->lo;
+    }
+    if (this->left->value < need) {
+      return this->right->ask(need - this->left->value);
+    }
+    return this->left->ask(need);
   }
-  return v;
-}
+};
 
 int main() {
-  std::ios_base::sync_with_stdio(0);
-  std::cin.tie(0);
-  std::cout.tie(0);
-  int t;
-  cin >> t;
-  for (int test = 1; test <= t; test += 1) {
-    int n, k, x0, y0, c, d, ex, ey, f;
-    cin >> n >> k >> x0 >> y0 >> c >> d >> ex >> ey >> f;
-    auto v = build(n, x0, y0, c, d, ex, ey, f);
-    auto pot = build_pot(n, k);
-    int ans = 0;
-    for (int i = 0; i < n; i += 1) {
-      int kappaloiro = (1LL * v[i] * (n - i)) % MOD;
-      ans = (1LL * kappaloiro * pot[i + 1] + ans) % MOD;
+  ios_base::sync_with_stdio(0);
+  cin.tie(0);
+  cout.tie(0);
+  int n, k;
+  cin >> n >> k;
+  set< int > s;
+  map< int, int > Hash, Unhash;
+  vector< vector< int > > v(n, vector< int >(3));
+  for (int i = 0; i < n; i += 1) {
+    for (int j = 0; j < 3; j += 1) {
+      cin >> v[i][j];
+      s.insert(v[i][j]);
     }
-    cout << "Case #" << test << ": " << ans << "\n";
   }
+  int size = 0;
+  for (const auto &i: s) {
+    Hash[i] = size;
+    Unhash[size] = i;
+    size += 1;
+  }
+  sort(v.begin(), v.end());
+  vector< vector< pair< int, int > > > g(n);
+  for (int i = 0; i < n; i += 1) {
+    for (int j = 0; j <= i; j += 1) {
+      g[i].push_back({v[j][1], v[j][2]});
+    }
+    sort(g[i].begin(), g[i].end());
+  }
+  long long int ans = LLONG_MAX;
+  for (int i = 0; i < n; i += 1) {
+    node *segtree = new node(0, n);
+    for (int j = 0; j <= i; j += 1) {
+      cout << i << " insert: " << g[i][j].second << " -> " << Hash[g[i][j].second] << endl;
+      segtree->insert(Hash[g[i][j].second]);
+      if (j + 1 >= k) {
+        ans = min(ans, 0LL + v[i][0] + g[i][j].first + Unhash[segtree->ask(k)]);
+        cout << i << ' ' << j << ": " << v[i][0] << ' ' << g[i][j].first << ' ' << Unhash[segtree->ask(k)] << endl;
+      }
+    }
+  }
+  cout << ans << endl;
   return 0;
 }
