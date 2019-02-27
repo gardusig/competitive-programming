@@ -35,6 +35,7 @@ vector< int > build_pot(const auto &n, const auto &k) {
   v[1] = k;
   for (int i = 2; i <= n; i += 1) {
     v[i] = (1LL * (exp(i, k + 1) - 1) * exp(i - 1, MOD - 2) - 1 + MOD) % MOD;
+    v[i] = (v[i - 1] + v[i]) % MOD;
   }
   return v;
 }
@@ -52,10 +53,8 @@ int main() {
     auto pot = build_pot(n, k);
     int ans = 0;
     for (int i = 0; i < n; i += 1) {
-      for (int j = 1; j <= (i + 1); j += 1) {
-        int current = (1LL * (n - i) * pot[j]) % MOD;
-        ans = (1LL * v[i] * current + ans) % MOD;
-      }
+      int kappaloiro = (1LL * v[i] * (n - i)) % MOD;
+      ans = (1LL * kappaloiro * pot[i + 1] + ans) % MOD;
     }
     cout << "Case #" << test << ": " << ans << "\n";
   }
