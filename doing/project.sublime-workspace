@@ -16,15 +16,22 @@
 			}
 		},
 		{
+			"contents": "3 2\n1 1 1\n1 2 1\n1 1 2\n",
 			"file": "stdin",
+			"file_size": 22,
+			"file_write_time": 131957831754496666,
 			"settings":
 			{
-				"buffer_size": 68,
+				"buffer_size": 22,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
+			"contents": "",
 			"file": "stdout",
+			"file_size": 0,
+			"file_write_time": 131957443234150647,
 			"settings":
 			{
 				"buffer_size": 0,
@@ -32,18 +39,23 @@
 			}
 		},
 		{
-			"file": "c_plus_plus.cpp",
+			"contents": "import atexit\nimport io\nimport sys\n\n_INPUT_LINES = sys.stdin.read().splitlines()\ninput = iter(_INPUT_LINES).__next__\n_OUTPUT_BUFFER = io.StringIO()\nsys.stdout = _OUTPUT_BUFFER\n\n@atexit.register\ndef write():\n  sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())\n\nclass node:\n  value = 0\n  left = None\n  right = None\n\n  def __init__(self, lo, hi):\n    self.lo = lo\n    self.hi = hi\n\n  def insert(self, idx):\n    if self.lo == idx and self.hi == idx:\n      self.value += 1\n      return\n    mid = self.lo + ((self.hi - self.lo) // 2)\n    if idx <= mid:\n      if self.left == None:\n        self.left = node(self.lo, mid)\n      self.left.insert(idx)\n    else:\n      if self.right == None:\n        self.right = node(mid + 1, self.hi)\n      self.right.insert(idx)\n    self.value = 0\n    if self.left != None:\n      self.value += self.left.value\n    if self.right != None:\n      self.value += self.right.value\n\n  def ask(self, n):\n    if self.value < n:\n      return -1\n    if self.lo == self.hi:\n      return self.lo\n    if self.left != None:\n      if self.left.value >= n:\n        return self.left.ask(n)\n      n -= self.left.value\n    return self.right.ask(n)\n\ndef main():\n  n, k = list(map(int, input().split(' ' )))\n  v = []\n  for i in range(n):\n    v.append(list(map(int, input().split(' ' ))))\n  v.sort()\n  ans = 1123456789012345\n  for i in range(n):\n    kappaloiro = []\n    for j in range(i + 1):\n      kappaloiro.append((v[j][1], v[j][2]))\n    kappaloiro.sort()\n    segtree = node(0, 1000000000)\n    for j in range(i + 1):\n      segtree.insert(kappaloiro[j][1])\n      value = segtree.ask(k)\n      if value != -1:\n        ans = min(ans, v[i][0] + kappaloiro[j][0] + value)\n  print(ans)\n  return 0\n\nmain()",
+			"file": "python.py",
+			"file_size": 1699,
+			"file_write_time": 131957649565917176,
 			"settings":
 			{
-				"buffer_size": 1663,
+				"buffer_size": 1699,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "python.py",
+			"file": "c_plus_plus.cpp",
 			"settings":
 			{
-				"buffer_size": 862,
+				"buffer_size": 2403,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -80,11 +92,11 @@
 	},
 	"expanded_folders":
 	[
-		"/home/gardusi/github",
-		"/home/gardusi/github/competitive_programming"
+		"/home/gardusi/github"
 	],
 	"file_history":
 	[
+		"/home/gardusi/github/competitive_programming/templates/c_plus_plus.cpp",
 		"/home/gardusi/github/discovery/main.py",
 		"/home/gardusi/github/discovery/stdout",
 		"/home/gardusi/github/discovery/stdin",
@@ -116,6 +128,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"value",
 			"BORDA",
 			"maximum",
 			"200.225.196.107",
@@ -123,11 +136,12 @@
 			"print"
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"idx"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -175,15 +189,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 68,
+						"buffer_size": 22,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								22,
+								22
 							]
 						],
 						"settings":
@@ -222,60 +236,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 3,
-					"file": "c_plus_plus.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1663,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "python.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 862,
+						"buffer_size": 1699,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1298,
+								1298
 							]
 						],
 						"settings":
@@ -285,10 +263,46 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 264.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "c_plus_plus.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2403,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2086,
+								2086
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 572.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -322,7 +336,7 @@
 		"cols":
 		[
 			0.0,
-			0.350520833333,
+			0.335416666666,
 			1.0
 		],
 		"rows":
@@ -340,7 +354,7 @@
 	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 58.0
+		"height": 78.0
 	},
 	"save_all_on_build": true,
 	"select_file":
