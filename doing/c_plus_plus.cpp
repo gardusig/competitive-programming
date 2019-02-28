@@ -16,38 +16,52 @@ public:
     this->value = 0;
     this->left = NULL;
     this->right = NULL;
-    if (this->lo != this->hi) {
-      const auto mid = this->lo + ((this->hi - this->lo) / 2);
-      this->left = new node(this->lo, mid);
-      this->right = new node(mid + 1, this->hi);
-    }
   }
 
   void insert(const auto &idx) {
-    if (this->lo > idx or this->hi < idx) {
-      return;
-    }
     if (this->lo == idx and this->hi == idx) {
       this->value += 1;
       return;
     }
-    this->left->insert(idx);
-    this->right->insert(idx);
-    this->value = this->left->value + this->right->value;
+    const auto mid = this->lo + ((this->hi - this->lo) / 2);
+    if (idx > mid) {
+      if (this->right == NULL) {
+        this->right = new node(mid + 1, this->hi);
+      }
+      this->right->insert(idx);
+    } else {
+      if (this->left == NULL) {
+        this->left = new node(this->lo, mid);
+      }
+      this->left->insert(idx);
+    }
+    this->value = 0;
+    if (this->left != NULL) {
+      this->value += this->left->value;
+    }
+    if (this->right != NULL) {
+      this->value += this->right->value;
+    }
   }
 
   int ask(const auto &need) {
-    cout << this->lo << ' ' << this->hi << ' ' << this->value << endl;
-    if (this->value < need) {
-      return -1;
-    }
     if (this->lo == this->hi) {
       return this->lo;
     }
-    if (this->left->value < need) {
+    if (this->left != NULL and this->left->value < need) {
       return this->right->ask(need - this->left->value);
     }
     return this->left->ask(need);
+  }
+
+  void clear() {
+    this->value = 0;
+    if (this->left != NULL) {
+      this->left->clear();
+    }
+    if (this->right != NULL) {
+      this->right->clear();
+    }
   }
 };
 
@@ -58,7 +72,7 @@ int main() {
   int n, k;
   cin >> n >> k;
   set< int > s;
-  map< int, int > Hash, Unhash;
+  unordered_map< int, int > Hash, Unhash;
   vector< vector< int > > v(n, vector< int >(3));
   for (int i = 0; i < n; i += 1) {
     for (int j = 0; j < 3; j += 1) {
@@ -80,15 +94,14 @@ int main() {
     }
     sort(g[i].begin(), g[i].end());
   }
+  node *segtree = new node(0, size);
   long long int ans = LLONG_MAX;
   for (int i = 0; i < n; i += 1) {
-    node *segtree = new node(0, n);
+    segtree->clear();
     for (int j = 0; j <= i; j += 1) {
-      cout << i << " insert: " << g[i][j].second << " -> " << Hash[g[i][j].second] << endl;
       segtree->insert(Hash[g[i][j].second]);
       if (j + 1 >= k) {
         ans = min(ans, 0LL + v[i][0] + g[i][j].first + Unhash[segtree->ask(k)]);
-        cout << i << ' ' << j << ": " << v[i][0] << ' ' << g[i][j].first << ' ' << Unhash[segtree->ask(k)] << endl;
       }
     }
   }
