@@ -19,7 +19,7 @@
 			"file": "stdin",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 17,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -36,7 +36,7 @@
 			"file": "c_plus_plus.cpp",
 			"settings":
 			{
-				"buffer_size": 1892,
+				"buffer_size": 713,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -46,7 +46,6 @@
 			"settings":
 			{
 				"buffer_size": 288,
-				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -83,18 +82,6 @@
 	},
 	"file_history":
 	[
-		"/home/gardusi/github/competitive_programming/solved_problems/Codeforces/Gym/Semana i 2018/J.cpp",
-		"/home/gardusi/github/competitive_programming/templates/c_plus_plus.cpp",
-		"/home/gardusi/github/competitive_programming/templates/python.py",
-		"/home/gardusi/github/competitive_programming/solved_problems/Codeforces/Gym/Semana i 2018/F.cpp",
-		"/home/gardusi/github/competitive_programming/solved_problems/Codeforces/Gym/Semana i 2018/H.cpp",
-		"/home/gardusi/github/competitive_programming/solved_problems/Codeforces/Gym/Semana i 2018/I.cpp",
-		"/home/gardusi/github/competitive_programming/solved_problems/Codeforces/Gym/Semana i 2018/G.py",
-		"/home/gardusi/github/competitive_programming/solved_problems/Codeforces/Gym/Semana i 2018/G.cpp",
-		"/home/gardusi/github/competitive_programming/solved_problems/Codeforces/Gym/Semana i 2018/C.cpp",
-		"/home/gardusi/github/competitive_programming/solved_problems/Codeforces/Gym/Semana i 2018/B.cpp",
-		"/home/gardusi/github/competitive_programming/doing/c_plus_plus.cpp",
-		"/home/gardusi/github/competitive_programming/solved_problems/Codeforces/Gym/Semana i 2018/A.cpp",
 		"/home/gardusi/github/discovery/main.py",
 		"/home/gardusi/github/discovery/stdout",
 		"/home/gardusi/github/discovery/stdin",
@@ -105,13 +92,14 @@
 		"/home/gardusi/github/competitive_programming/doing/stdin",
 		"/home/gardusi/github/competitive_programming/doing/stdout",
 		"/home/gardusi/github/competitive_programming/doing/python.py",
+		"/home/gardusi/github/competitive_programming/doing/c_plus_plus.cpp",
 		"/home/gardusi/Downloads/routers.txt",
 		"/home/gardusi/Downloads/show configuration protocols bgp",
 		"/home/gardusi/Downloads/help.txt"
 	],
 	"find":
 	{
-		"height": 43.0
+		"height": 26.0
 	},
 	"find_in_files":
 	{
@@ -125,11 +113,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"long ",
-			"segtree.",
-			"std::",
-			"std",
-			"value",
+			"kappa",
+			"double",
 			"BORDA",
 			"maximum",
 			"200.225.196.107",
@@ -142,10 +127,8 @@
 		"regex": false,
 		"replace_history":
 		[
-			"",
-			"segtree->",
-			"",
-			"idx"
+			"compare",
+			"long double"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -184,7 +167,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -193,15 +176,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 17,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								17,
+								17
 							]
 						],
 						"settings":
@@ -255,15 +238,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1892,
+						"buffer_size": 713,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1892,
-								1892
+								230,
+								230
 							]
 						],
 						"settings":
@@ -273,7 +256,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1056.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -292,8 +275,8 @@
 						"selection":
 						[
 							[
-								288,
-								288
+								0,
+								0
 							]
 						],
 						"settings":
@@ -306,7 +289,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -314,7 +297,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 31.0
+		"height": 26.0
 	},
 	"input":
 	{
@@ -340,7 +323,7 @@
 		"cols":
 		[
 			0.0,
-			0.335416666666,
+			0.350520833333,
 			1.0
 		],
 		"rows":
@@ -358,7 +341,7 @@
 	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 78.0
+		"height": 70.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -399,7 +382,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 312.0,
 	"status_bar_visible": true,
 	"template_settings":
