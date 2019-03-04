@@ -1,1 +1,1 @@
-# [Problem Statements](https://codeforces.com/gym/101917)
+# Contest [Link](https://codeforces.com/gym/101917)
