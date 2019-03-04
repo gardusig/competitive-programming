@@ -10,7 +10,5 @@ Current coding or testing :D
 ## reference
 Everything I use as reference during a competition
 
-
-
 ## solved_problems
-Accepted solutions for some problems / competitions from past competitions
+Accepted solutions from past competitions I took part
