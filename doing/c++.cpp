@@ -1,36 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int solve(const auto &i, const auto &j, const auto &k, const auto &sum, auto &dp) {
-  if (dp[i][j][k] != -1) {
-    return dp[i][j][k];
+vector<int> cellCompete(int* states, int days) {
+  int size = 2 + (sizeof(states) / sizeof(states[0]));
+  vector< int > ans(size, 0), before(size, 0);
+  for (int i = 1; i < size - 1; i += 1) {
+    before[i] = states[i - 1];
   }
-  int current = sum[i][k + 1] - sum[i][j];
-  if (j == k) {
-    return dp[i][j][k] = current;
+  for (int i = 0; i < days; i += 1) {
+    for (int j = 1; j < size - 1; j += 1) {
+      ans[j] = !(before[j - 1] == before[j + 1]);
+    }
+    before = ans;
   }
-  int nxt = min(solve(i - 1, j + 1, k, sum, dp), solve(i - 1, j, k - 1, sum, dp));
-  return dp[i][j][k] = current + nxt;
+  ans.erase(ans.begin());
+  ans.erase(ans.end() - 1);
+  return ans;
 }
 
 int main() {
-  ios_base::sync_with_stdio(0);
-  cin.tie(0);
-  cout.tie(0);
-  int n;
-  cin >> n;
-  vector< vector< vector< int > > > dp(n + 5);
-  vector< vector< int > > sum(n + 5, vector< int >(n + 5));
-  for (int i = 0; i < n; i += 1) {
-    dp[i].resize(n + 5);
-    sum[i][0] = 0;
-    for (int j = 0; j < n; j += 1) {
-      dp[i][j] = vector< int > (n, -1);
-      int value;
-      cin >> value;
-      sum[i][j + 1] = sum[i][j] + value;
+  int states[] = {1, 0, 0, 0, 0, 1, 0, 0};
+  for (int days = 1; days <= 100; days += 1) {
+    for (const auto &i: cellCompete(states, days)) {
+      cout << i << ' ';
     }
+    cout << endl;
   }
-  cout << solve(n - 1, 0, n - 1, sum, dp) << endl;
   return 0;
 }
