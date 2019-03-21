@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"cur",
+				"current_ans"
+			],
+			[
 				"in",
 				"inputList"
 			],
@@ -31,7 +35,7 @@
 			"file": "stdin.txt",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 32,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -46,19 +50,19 @@
 			}
 		},
 		{
-			"file": "python.py",
+			"file": "c++.cpp",
 			"settings":
 			{
-				"buffer_size": 288,
+				"buffer_size": 852,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "c++.cpp",
+			"file": "python.py",
 			"settings":
 			{
-				"buffer_size": 134,
+				"buffer_size": 288,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -222,15 +226,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 32,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								32,
+								32
 							]
 						],
 						"settings":
@@ -241,7 +245,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -269,17 +273,47 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 3,
+					"file": "c++.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 852,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								515,
+								515
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 77.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "python.py",
 					"semi_transient": false,
 					"settings":
@@ -305,37 +339,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "c++.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 134,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								120,
-								120
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -343,7 +347,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 31.0
+		"height": 32.0
 	},
 	"input":
 	{
@@ -421,7 +425,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
