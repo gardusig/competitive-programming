@@ -10,8 +10,10 @@ sys.stdout = _OUTPUT_BUFFER
 @atexit.register
 def write():
   sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
-
+  
 def main():
-  return 0
+  n = int(input())
+  for i in range(n):
+    print(1 << i)
 
 main()
