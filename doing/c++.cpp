@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector< vector< int > > build_sparse_table(const auto &n, const auto &v) {
+vector< vector< int > > build_sparse_table(const auto &v) {
+  int n = int(v.size());
   int m = log2(n) + 1;
   vector< vector< int > > st(n, vector< int >(m));
   for (int i = 0; i < n; i += 1) {
@@ -37,7 +38,7 @@ int main() {
       cin >> v[i];
     }
     unordered_set< int > ans;
-    auto st = build_sparse_table(n, v);
+    auto st = build_sparse_table(v);
     for (int i = 0; i < n; i += 1) {
       int lo = i;
       while (lo < n) {
