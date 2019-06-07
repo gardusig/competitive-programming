@@ -43,9 +43,7 @@ int main() {
   }
   int ans = r[0];
   for (int i = 1; i < n; i += 1) {
-    int kappa = l[i - 1];
-    int keepo = r[i];
-    ans = max(ans, kappa + keepo);
+    ans = max(ans, l[i - 1] + r[i]);
   }
   cout << min(n / 2, ans) << endl;
   return 0;
