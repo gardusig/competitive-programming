@@ -1,0 +1,1268 @@
+system_id: "R3-mx480-b:10.17.3.252"
+component_id: 0
+sensor_name: "interface-1:/junos/system/linecard/interface/logical/usage/:/junos/system/linecard/interface/logical/usage/:PFE"
+sequence_number: 172
+timestamp: 1558637368011
+version_major: 1
+version_minor: 1
+enterprise {
+  [juniperNetworks] {
+    [jnpr_interface_ext] {
+      interface_stats {
+        if_name: "ge-0/1/0"
+        init_time: 1558230229
+        snmp_if_index: 585
+        egress_queue_info {
+          queue_number: 0
+          packets: 40616
+          bytes: 8552741
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 12779520
+        }
+        egress_queue_info {
+          queue_number: 1
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 2
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 3
+          packets: 15627
+          bytes: 4174892
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 638976
+        }
+        egress_queue_info {
+          queue_number: 4
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 5
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 6
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 7
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        ingress_stats {
+          if_pkts: 92397
+          if_octets: 7427580
+          if_1sec_pkts: 1
+          if_1sec_octets: 56
+          if_uc_pkts: 3583
+          if_mc_pkts: 87829
+          if_bc_pkts: 1069
+          if_error: 0
+          if_pause_pkts: 0
+        }
+        egress_stats {
+          if_pkts: 56243
+          if_octets: 11405019
+          if_1sec_pkts: 0
+          if_1sec_octets: 0
+          if_uc_pkts: 19302
+          if_mc_pkts: 14660
+          if_bc_pkts: 22281
+          if_error: 0
+          if_pause_pkts: 0
+        }
+        ingress_errors {
+          if_errors: 0
+          if_in_qdrops: 0
+          if_in_frame_errors: 0
+          if_discards: 0
+          if_in_runts: 0
+          if_in_l3_incompletes: 0
+          if_in_l2chan_errors: 0
+          if_in_l2_mismatch_timeouts: 0
+          if_in_fifo_errors: 0
+          if_in_resource_errors: 0
+        }
+        if_operational_status: "UP"
+        if_transitions: 1
+        ifLastChange: 0
+        ifHighSpeed: 1000
+        egress_errors {
+          if_errors: 0
+          if_discards: 0
+        }
+      }
+      interface_stats {
+        if_name: "ge-0/1/0"
+        init_time: 1558230229
+        snmp_if_index: 585
+        egress_queue_info {
+          queue_number: 0
+          packets: 40619
+          bytes: 8553704
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 12779520
+        }
+        egress_queue_info {
+          queue_number: 1
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 2
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 3
+          packets: 15629
+          bytes: 4175460
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 638976
+        }
+        egress_queue_info {
+          queue_number: 4
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 5
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 6
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 7
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        ingress_stats {
+          if_pkts: 92425
+          if_octets: 7429351
+          if_1sec_pkts: 1
+          if_1sec_octets: 56
+          if_uc_pkts: 3584
+          if_mc_pkts: 87857
+          if_bc_pkts: 1069
+          if_error: 0
+          if_pause_pkts: 0
+        }
+        egress_stats {
+          if_pkts: 56248
+          if_octets: 11406420
+          if_1sec_pkts: 0
+          if_1sec_octets: 133
+          if_uc_pkts: 19305
+          if_mc_pkts: 14661
+          if_bc_pkts: 22281
+          if_error: 0
+          if_pause_pkts: 0
+        }
+        ingress_errors {
+          if_errors: 0
+          if_in_qdrops: 0
+          if_in_frame_errors: 0
+          if_discards: 0
+          if_in_runts: 0
+          if_in_l3_incompletes: 0
+          if_in_l2chan_errors: 0
+          if_in_l2_mismatch_timeouts: 0
+          if_in_fifo_errors: 0
+          if_in_resource_errors: 0
+        }
+        if_operational_status: "UP"
+        if_transitions: 1
+        ifLastChange: 0
+        ifHighSpeed: 1000
+        egress_errors {
+          if_errors: 0
+          if_discards: 0
+        }
+      }
+      interface_stats {
+        if_name: "ge-0/1/0"
+        init_time: 1558230229
+        snmp_if_index: 585
+        egress_queue_info {
+          queue_number: 0
+          packets: 40621
+          bytes: 8554554
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 12779520
+        }
+        egress_queue_info {
+          queue_number: 1
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 2
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 3
+          packets: 15631
+          bytes: 4175852
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 638976
+        }
+        egress_queue_info {
+          queue_number: 4
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 5
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 6
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 7
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        ingress_stats {
+          if_pkts: 92453
+          if_octets: 7431275
+          if_1sec_pkts: 1
+          if_1sec_octets: 56
+          if_uc_pkts: 3584
+          if_mc_pkts: 87884
+          if_bc_pkts: 1070
+          if_error: 0
+          if_pause_pkts: 0
+        }
+        egress_stats {
+          if_pkts: 56252
+          if_octets: 11407550
+          if_1sec_pkts: 0
+          if_1sec_octets: 133
+          if_uc_pkts: 19307
+          if_mc_pkts: 14663
+          if_bc_pkts: 22281
+          if_error: 0
+          if_pause_pkts: 0
+        }
+        ingress_errors {
+          if_errors: 0
+          if_in_qdrops: 0
+          if_in_frame_errors: 0
+          if_discards: 0
+          if_in_runts: 0
+          if_in_l3_incompletes: 0
+          if_in_l2chan_errors: 0
+          if_in_l2_mismatch_timeouts: 0
+          if_in_fifo_errors: 0
+          if_in_resource_errors: 0
+        }
+        if_operational_status: "UP"
+        if_transitions: 1
+        ifLastChange: 0
+        ifHighSpeed: 1000
+        egress_errors {
+          if_errors: 0
+          if_discards: 0
+        }
+      }
+      interface_stats {
+        if_name: "ge-0/1/0"
+        init_time: 1558230229
+        snmp_if_index: 585
+        egress_queue_info {
+          queue_number: 0
+          packets: 40628
+          bytes: 8555734
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 12779520
+        }
+        egress_queue_info {
+          queue_number: 1
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 2
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 3
+          packets: 15632
+          bytes: 4176136
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 638976
+        }
+        egress_queue_info {
+          queue_number: 4
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 5
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 6
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 7
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        ingress_stats {
+          if_pkts: 92481
+          if_octets: 7433199
+          if_1sec_pkts: 1
+          if_1sec_octets: 56
+          if_uc_pkts: 3584
+          if_mc_pkts: 87910
+          if_bc_pkts: 1071
+          if_error: 0
+          if_pause_pkts: 0
+        }
+        egress_stats {
+          if_pkts: 56260
+          if_octets: 11408830
+          if_1sec_pkts: 0
+          if_1sec_octets: 0
+          if_uc_pkts: 19310
+          if_mc_pkts: 14664
+          if_bc_pkts: 22286
+          if_error: 0
+          if_pause_pkts: 0
+        }
+        ingress_errors {
+          if_errors: 0
+          if_in_qdrops: 0
+          if_in_frame_errors: 0
+          if_discards: 0
+          if_in_runts: 0
+          if_in_l3_incompletes: 0
+          if_in_l2chan_errors: 0
+          if_in_l2_mismatch_timeouts: 0
+          if_in_fifo_errors: 0
+          if_in_resource_errors: 0
+        }
+        if_operational_status: "UP"
+        if_transitions: 1
+        ifLastChange: 0
+        ifHighSpeed: 1000
+        egress_errors {
+          if_errors: 0
+          if_discards: 0
+        }
+      }
+      interface_stats {
+        if_name: "ge-0/1/0"
+        init_time: 1558230229
+        snmp_if_index: 585
+        egress_queue_info {
+          queue_number: 0
+          packets: 40630
+          bytes: 8556583
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 12779520
+        }
+        egress_queue_info {
+          queue_number: 1
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 2
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 3
+          packets: 15633
+          bytes: 4176420
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 638976
+        }
+        egress_queue_info {
+          queue_number: 4
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 5
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 6
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 7
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        ingress_stats {
+          if_pkts: 92510
+          if_octets: 7434958
+          if_1sec_pkts: 1
+          if_1sec_octets: 56
+          if_uc_pkts: 3584
+          if_mc_pkts: 87939
+          if_bc_pkts: 1071
+          if_error: 0
+          if_pause_pkts: 0
+        }
+        egress_stats {
+          if_pkts: 56263
+          if_octets: 11409869
+          if_1sec_pkts: 0
+          if_1sec_octets: 0
+          if_uc_pkts: 19312
+          if_mc_pkts: 14665
+          if_bc_pkts: 22286
+          if_error: 0
+          if_pause_pkts: 0
+        }
+        ingress_errors {
+          if_errors: 0
+          if_in_qdrops: 0
+          if_in_frame_errors: 0
+          if_discards: 0
+          if_in_runts: 0
+          if_in_l3_incompletes: 0
+          if_in_l2chan_errors: 0
+          if_in_l2_mismatch_timeouts: 0
+          if_in_fifo_errors: 0
+          if_in_resource_errors: 0
+        }
+        if_operational_status: "UP"
+        if_transitions: 1
+        ifLastChange: 0
+        ifHighSpeed: 1000
+        egress_errors {
+          if_errors: 0
+          if_discards: 0
+        }
+      }
+      interface_stats {
+        if_name: "ge-0/1/0"
+        init_time: 1558230229
+        snmp_if_index: 585
+        egress_queue_info {
+          queue_number: 0
+          packets: 40632
+          bytes: 8557432
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 12779520
+        }
+        egress_queue_info {
+          queue_number: 1
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 2
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 3
+          packets: 15635
+          bytes: 4176812
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 638976
+        }
+        egress_queue_info {
+          queue_number: 4
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 5
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 6
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 7
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        ingress_stats {
+          if_pkts: 92537
+          if_octets: 7436653
+          if_1sec_pkts: 1
+          if_1sec_octets: 56
+          if_uc_pkts: 3584
+          if_mc_pkts: 87965
+          if_bc_pkts: 1071
+          if_error: 0
+          if_pause_pkts: 0
+        }
+        egress_stats {
+          if_pkts: 56267
+          if_octets: 11410998
+          if_1sec_pkts: 0
+          if_1sec_octets: 0
+          if_uc_pkts: 19315
+          if_mc_pkts: 14666
+          if_bc_pkts: 22286
+          if_error: 0
+          if_pause_pkts: 0
+        }
+        ingress_errors {
+          if_errors: 0
+          if_in_qdrops: 0
+          if_in_frame_errors: 0
+          if_discards: 0
+          if_in_runts: 0
+          if_in_l3_incompletes: 0
+          if_in_l2chan_errors: 0
+          if_in_l2_mismatch_timeouts: 0
+          if_in_fifo_errors: 0
+          if_in_resource_errors: 0
+        }
+        if_operational_status: "UP"
+        if_transitions: 1
+        ifLastChange: 0
+        ifHighSpeed: 1000
+        egress_errors {
+          if_errors: 0
+          if_discards: 0
+        }
+      }
+      interface_stats {
+        if_name: "ge-0/1/0"
+        init_time: 1558230229
+        snmp_if_index: 585
+        egress_queue_info {
+          queue_number: 0
+          packets: 40634
+          bytes: 8558281
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 12779520
+        }
+        egress_queue_info {
+          queue_number: 1
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 2
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 3
+          packets: 15636
+          bytes: 4177096
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 638976
+        }
+        egress_queue_info {
+          queue_number: 4
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 5
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 6
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        egress_queue_info {
+          queue_number: 7
+          packets: 0
+          bytes: 0
+          tail_drop_packets: 0
+          rl_drop_packets: 0
+          rl_drop_bytes: 0
+          red_drop_packets: 0
+          red_drop_bytes: 0
+          avg_buffer_occupancy: 0
+          cur_buffer_occupancy: 0
+          peak_buffer_occupancy: 0
+          allocated_buffer_size: 32768
+        }
+        ingress_stats {
+          if_pkts: 92564
+          if_octets: 7438348
+          if_1sec_pkts: 1
+          if_1sec_octets: 56
+          if_uc_pkts: 3584
+          if_mc_pkts: 87992
+          if_bc_pkts: 1071
+          if_error: 0
+          if_pause_pkts: 0
+        }
+        egress_stats {
+          if_pkts: 56270
+          if_octets: 11412037
+          if_1sec_pkts: 0
+          if_1sec_octets: 0
+          if_uc_pkts: 19317
+          if_mc_pkts: 14667
+          if_bc_pkts: 22286
+          if_error: 0
+          if_pause_pkts: 0
+        }
+        ingress_errors {
+          if_errors: 0
+          if_in_qdrops: 0
+          if_in_frame_errors: 0
+          if_discards: 0
+          if_in_runts: 0
+          if_in_l3_incompletes: 0
+          if_in_l2chan_errors: 0
+          if_in_l2_mismatch_timeouts: 0
+          if_in_fifo_errors: 0
+          if_in_resource_errors: 0
+        }
+        if_operational_status: "UP"
+        if_transitions: 1
+        ifLastChange: 0
+        ifHighSpeed: 1000
+        egress_errors {
+          if_errors: 0
+          if_discards: 0
+        }
+      }
+    }
+    [jnprLogicalInterfaceExt] {
+      interface_info {
+        if_name: "ge-0/1/0.0"
+        init_time: 1558230231
+        snmp_if_index: 559
+        ingress_stats {
+          if_packets: 92397
+          if_octets: 7427580
+          if_ucast_packets: 60183
+          if_mcast_packets: 32214
+        }
+        egress_stats {
+          if_packets: 15512
+          if_octets: 5995468
+          if_ucast_packets: 15512
+          if_mcast_packets: 0
+        }
+        op_state {
+          operational_status: "up"
+        }
+      }
+      interface_info {
+        if_name: "ge-0/1/0.0"
+        init_time: 1558230231
+        snmp_if_index: 559
+        ingress_stats {
+          if_packets: 92425
+          if_octets: 7429351
+          if_ucast_packets: 60200
+          if_mcast_packets: 32225
+        }
+        egress_stats {
+          if_packets: 15514
+          if_octets: 5996241
+          if_ucast_packets: 15514
+          if_mcast_packets: 0
+        }
+        op_state {
+          operational_status: "up"
+        }
+      }
+      interface_info {
+        if_name: "ge-0/1/0.0"
+        init_time: 1558230231
+        snmp_if_index: 559
+        ingress_stats {
+          if_packets: 92453
+          if_octets: 7431275
+          if_ucast_packets: 60217
+          if_mcast_packets: 32236
+        }
+        egress_stats {
+          if_packets: 15516
+          if_octets: 5997015
+          if_ucast_packets: 15516
+          if_mcast_packets: 0
+        }
+        op_state {
+          operational_status: "up"
+        }
+      }
+      interface_info {
+        if_name: "ge-0/1/0.0"
+        init_time: 1558230231
+        snmp_if_index: 559
+        ingress_stats {
+          if_packets: 92481
+          if_octets: 7433199
+          if_ucast_packets: 60234
+          if_mcast_packets: 32247
+        }
+        egress_stats {
+          if_packets: 15518
+          if_octets: 5997789
+          if_ucast_packets: 15518
+          if_mcast_packets: 0
+        }
+        op_state {
+          operational_status: "up"
+        }
+      }
+      interface_info {
+        if_name: "ge-0/1/0.0"
+        init_time: 1558230231
+        snmp_if_index: 559
+        ingress_stats {
+          if_packets: 92510
+          if_octets: 7434958
+          if_ucast_packets: 60250
+          if_mcast_packets: 32260
+        }
+        egress_stats {
+          if_packets: 15520
+          if_octets: 5998562
+          if_ucast_packets: 15520
+          if_mcast_packets: 0
+        }
+        op_state {
+          operational_status: "up"
+        }
+      }
+      interface_info {
+        if_name: "ge-0/1/0.0"
+        init_time: 1558230231
+        snmp_if_index: 559
+        ingress_stats {
+          if_packets: 92537
+          if_octets: 7436653
+          if_ucast_packets: 60266
+          if_mcast_packets: 32271
+        }
+        egress_stats {
+          if_packets: 15522
+          if_octets: 5999335
+          if_ucast_packets: 15522
+          if_mcast_packets: 0
+        }
+        op_state {
+          operational_status: "up"
+        }
+      }
+      interface_info {
+        if_name: "ge-0/1/0.0"
+        init_time: 1558230231
+        snmp_if_index: 559
+        ingress_stats {
+          if_packets: 92564
+          if_octets: 7438348
+          if_ucast_packets: 60282
+          if_mcast_packets: 32282
+        }
+        egress_stats {
+          if_packets: 15524
+          if_octets: 6000108
+          if_ucast_packets: 15524
+          if_mcast_packets: 0
+        }
+        op_state {
+          operational_status: "up"
+        }
+      }
+    }
+  }
+}
