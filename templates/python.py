@@ -1,3 +1,5 @@
+# ~ <template>
+
 import atexit
 import io
 import sys
@@ -11,6 +13,8 @@ sys.stdout = _OUTPUT_BUFFER
 def write():
   sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
 
+# ~ </template>
+  
 def main():
   return 0
 

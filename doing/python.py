@@ -1,6 +1,7 @@
+# ~ <template>
+
 import atexit
 import io
-import math
 import sys
 
 _INPUT_LINES = sys.stdin.read().splitlines()
@@ -11,3 +12,10 @@ sys.stdout = _OUTPUT_BUFFER
 @atexit.register
 def write():
   sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
+
+# ~ </template>
+  
+def main():
+  return 0
+
+main()
