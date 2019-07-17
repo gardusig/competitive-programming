@@ -14,8 +14,13 @@ def write():
   sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
 
 # ~ </template>
+
+class Solution:
+  
+  def __init__(self):
+    pass
   
 def main():
-  return 0
+  Solution()
 
 main()
