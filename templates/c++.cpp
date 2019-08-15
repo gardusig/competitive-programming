@@ -16,12 +16,9 @@ class Solution {
       cin.tie(0);
       cout.tie(0);
     }
-
-    void main() {
-    }
 };
 
 int main() {
-  Solution().main();
+  Solution();
   return 0;
 }

@@ -16,14 +16,11 @@ def write():
 # ~ </template>
 
 class Solution:
-  
+
   def __init__(self):
     pass
-    
-  def main(self):
-    pass
-  
+
 def main():
-  Solution().main()
+  Solution()
 
 main()
