@@ -1,4 +1,4 @@
-# ~ <template>
+# <template>
 
 import atexit
 import io
@@ -13,10 +13,9 @@ sys.stdout = _OUTPUT_BUFFER
 def write():
   sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
 
-# ~ </template>
+# </template>
 
 class Solution:
-
   def __init__(self):
     pass
 
