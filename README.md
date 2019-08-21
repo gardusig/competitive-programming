@@ -5,7 +5,7 @@
 ## reference
 Everything I use as reference during a competition
 
-## solvedProblems
+## solutions
 Accepted solutions from competitions I took part
 
 ## templates
