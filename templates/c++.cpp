@@ -1,23 +1,32 @@
 // <template>
 
 #include <bits/stdc++.h>
-using namespace std;
 
-mt19937 rng(int(chrono::steady_clock::now().time_since_epoch().count()));
+std::mt19937 rng(int(std::chrono::steady_clock::now().time_since_epoch().count()));
 
 // </template>
 
-class Solution {
-  private:
-  public:
-    Solution() {
-      ios_base::sync_with_stdio(0);
-      cin.tie(0);
-      cout.tie(0);
-    }
+class Solution
+{
+private:
+  // shuffle(v.begin(), v.end(), rng);
+
+public:
+  Solution()
+  {
+    std::ios_base::sync_with_stdio(0);
+    std::cin.tie(0);
+    std::cout.tie(0);
+  }
+
+  void main()
+  {
+
+  }
 };
 
-int main() {
-  Solution();
+int main()
+{
+  Solution().main();
   return 0;
 }
