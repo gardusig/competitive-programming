@@ -13,21 +13,11 @@ public:
 
     void main()
     {
-        readTask();
-        solveTask();
+
     }
 
 private:
 
-    void readTask()
-    {
-
-    }
-
-    void solveTask()
-    {
-
-    }
 };
 
 int main()
