@@ -20,65 +20,65 @@ public:
 
 class ford_fulkerson {
 private:
-	ford_fulkerson() {}
-	static int dfs(const int& i, const int& flow, const int& sink, const vector< vector<int> >& g, vector<edge>& edges, vector<int>& seen, int& current) {
-		if (i == sink)
-			return flow;
-		seen[i] = current;
-		for (const int& j : g[i])
-			if (seen[edges[j].to] < current and edges[j].flow < edges[j].capacity)
-				if (int nxt = dfs(edges[j].to, min(flow, edges[j].capacity - edges[j].flow), sink, g, edges, seen, current)) {
-					edges[j].flow += nxt, edges[j ^ 1].flow -= nxt;
-					return nxt;
-				}
-		return 0;
-	}
+    ford_fulkerson() {}
+    static int dfs(const int& i, const int& flow, const int& sink, const vector< vector<int> >& g, vector<edge>& edges, vector<int>& seen, int& current) {
+        if (i == sink)
+            return flow;
+        seen[i] = current;
+        for (const int& j : g[i])
+            if (seen[edges[j].to] < current and edges[j].flow < edges[j].capacity)
+                if (int nxt = dfs(edges[j].to, min(flow, edges[j].capacity - edges[j].flow), sink, g, edges, seen, current)) {
+                    edges[j].flow += nxt, edges[j ^ 1].flow -= nxt;
+                    return nxt;
+                }
+        return 0;
+    }
 public:
-	static int solve(const int& source, const int& sink, const vector< vector<int> >& g, vector<edge>& edges) {
-		vector<int> seen(N, 0);
-		int ans = 0, current = 0;
-		while (int i = dfs(source, INT_MAX, sink, g, edges, seen, ++current))
-			ans += i;
-		return ans;
-	}
+    static int solve(const int& source, const int& sink, const vector< vector<int> >& g, vector<edge>& edges) {
+        vector<int> seen(N, 0);
+        int ans = 0, current = 0;
+        while (int i = dfs(source, INT_MAX, sink, g, edges, seen, ++current))
+            ans += i;
+        return ans;
+    }
 };
 
 class edmonds_karp {
 private:
-	edmonds_karp() {}
-	static int bfs(const int& source, const int& sink, const vector< vector<int> >& g, vector<edge>& edges, vector<int>& seen, vector<int>& parent, int& current) {
-		queue< pair<int, int> > q;
-		seen[source] = current;
-		q.push({source, -1});
-		while (!q.empty()) {
-			int i = q.front().first;
-			int last_edge = q.front().second;
-			q.pop();
-			if (i == sink) {
-				int flow = INT_MAX;
-				for (int j = last_edge; j != -1; j = parent[j])
-					flow = min(flow, edges[j].capacity - edges[j].flow);
-				for (int j = last_edge; j != -1; j = parent[j])
-					edges[j].flow += flow, edges[j ^ 1].flow -= flow;
-				return flow;
-			}
-			for (const int& j : g[i])
-				if (seen[edges[j].to] < current and edges[j].flow < edges[j].capacity)
-					parent[j] = last_edge,
-					seen[edges[j].to] = current,
-					q.push({edges[j].to, j});
-		}
-		return 0;
-	}
+    edmonds_karp() {}
+    static int bfs(const int& source, const int& sink, const vector< vector<int> >& g, vector<edge>& edges, vector<int>& seen, vector<int>& parent, int& current) {
+        queue< pair<int, int> > q;
+        seen[source] = current;
+        q.push({source, -1});
+        while (!q.empty()) {
+            int i = q.front().first;
+            int last_edge = q.front().second;
+            q.pop();
+            if (i == sink) {
+                int flow = INT_MAX;
+                for (int j = last_edge; j != -1; j = parent[j])
+                    flow = min(flow, edges[j].capacity - edges[j].flow);
+                for (int j = last_edge; j != -1; j = parent[j])
+                    edges[j].flow += flow, edges[j ^ 1].flow -= flow;
+                return flow;
+            }
+            for (const int& j : g[i])
+                if (seen[edges[j].to] < current and edges[j].flow < edges[j].capacity)
+                    parent[j] = last_edge,
+                    seen[edges[j].to] = current,
+                    q.push({edges[j].to, j});
+        }
+        return 0;
+    }
 public:
-	static int solve(const int& source, const int& sink, const vector< vector<int> >& g, vector<edge>& edges) {
-		vector<int> seen(N, 0);
-		vector<int> parent(N, 0);
-		int ans = 0, current = 0;
-		while (int i = bfs(source, sink, g, edges, seen, parent, ++current))
-			ans += i;
-		return ans;
-	}
+    static int solve(const int& source, const int& sink, const vector< vector<int> >& g, vector<edge>& edges) {
+        vector<int> seen(N, 0);
+        vector<int> parent(N, 0);
+        int ans = 0, current = 0;
+        while (int i = bfs(source, sink, g, edges, seen, parent, ++current))
+            ans += i;
+        return ans;
+    }
 };
 
 class dinic {
@@ -132,30 +132,30 @@ public:
 };
 
 bool valid(const auto &a, const auto &b, const auto &s) {
-	long long kappa = 1LL * (a.first - b.first) * (a.first - b.first);
-	long long keepo = 1LL * (a.second - b.second) * (a.second - b.second);
-	return sqrt(kappa + keepo) < s;
+    long long kappa = 1LL * (a.first - b.first) * (a.first - b.first);
+    long long keepo = 1LL * (a.second - b.second) * (a.second - b.second);
+    return sqrt(kappa + keepo) < s;
 }
 
 int main() {
-	int n, m, s; cin >> n >> m >> s; s -= 10;
-	vector< pair< int, int > > beagles(n);
-	for (int i = 0; i < n; ++i)
-		cin >> beagles[i].first >> beagles[i].second;
-	vector< pair< pair< int, int>, int > > bowls(m);
-	for (int i = 0; i < m; ++i)
-		cin >> bowls[i].first.first >> bowls[i].first.second >> bowls[i].second;
-	int source = 0, sink = 1;
-	int vertexes = n + m + 2;
-	vector<edge> edges;
-	vector< vector< int > > g(vertexes);
-	for (int i = 0; i < n; ++i)
-		edge::add(source, 2 + i, 1, g, edges);
-	for (int j = 0; j < m; ++j)
-		edge::add(2 + n + j, sink, bowls[j].second, g, edges);
-	for (int i = 0; i < n; ++i)
-		for (int j = 0; j < m; ++j)
-			if (valid(beagles[i], bowls[j].first, s) == true)
-				edge::add(2 + i, 2 + n + j, 1, g, edges);
-	return cout << (dinic::solve(source, sink, g, edges, vertexes) == n ? "YES" : "NO") << '\n', 0;
+    int n, m, s; cin >> n >> m >> s; s -= 10;
+    vector< pair< int, int > > beagles(n);
+    for (int i = 0; i < n; ++i)
+        cin >> beagles[i].first >> beagles[i].second;
+    vector< pair< pair< int, int>, int > > bowls(m);
+    for (int i = 0; i < m; ++i)
+        cin >> bowls[i].first.first >> bowls[i].first.second >> bowls[i].second;
+    int source = 0, sink = 1;
+    int vertexes = n + m + 2;
+    vector<edge> edges;
+    vector< vector< int > > g(vertexes);
+    for (int i = 0; i < n; ++i)
+        edge::add(source, 2 + i, 1, g, edges);
+    for (int j = 0; j < m; ++j)
+        edge::add(2 + n + j, sink, bowls[j].second, g, edges);
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < m; ++j)
+            if (valid(beagles[i], bowls[j].first, s) == true)
+                edge::add(2 + i, 2 + n + j, 1, g, edges);
+    return cout << (dinic::solve(source, sink, g, edges, vertexes) == n ? "YES" : "NO") << '\n', 0;
 }
