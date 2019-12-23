@@ -15,7 +15,7 @@ void scanint_negative (int &x) {
     register int c = getchar_unlocked();
     for (; (c < 48 or c > 57) and c != '-'; c = getchar_unlocked());
     if (c == '-')
-        neg = true, c = getchar_unlocked();
+        negative = true, c = getchar_unlocked();
     for (; c > 47 and c < 58; c = getchar_unlocked())
         x = (x << 1) + (x << 3) + c - 48;
     if (negative)
