@@ -426,7 +426,7 @@ vector< pv > _2D::build_convex_hull(const vector< pv > &points) {
         }
         st.push(O);
       }
-      st.push(A);  
+      st.push(A);
     }
   }
   v.clear();
