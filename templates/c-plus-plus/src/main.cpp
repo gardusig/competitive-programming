@@ -6,7 +6,7 @@ int main()
     std::cin.tie(0);
     std::cout.tie(0);
 
-
+    std::unique_ptr<int> ptr(new int(1));
 
     return 0;
 }
