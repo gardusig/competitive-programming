@@ -13,16 +13,14 @@ def write():
     sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
 
 
-class Solution:
-    def __init__(self):
-        pass
-
-    def main(self):
-        pass
+def solve_test_case():
+    pass
 
 
 def main():
-    Solution().main()
+    for test in range(1, int(input()) + 1):
+        print('Case #' + str(test) + ': ')
+        solve_test_case()
 
 
 main()
