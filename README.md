@@ -7,6 +7,3 @@ Everything I use as reference during a competition
 
 ## solutions
 Accepted solutions from competitions I took part
-
-## templates
-Templates for faster input
