@@ -71,10 +71,15 @@ std::vector<int> build_inverse_factorial(const std::vector<int> &fact,
   return fact_inv;
 }
 
-int combination(const auto &n, const auto &k, const auto &MOD, const auto &fat,
-                const auto &inv_fat) {
-  int den = (1LL * inv_fat[k] * inv_fat[n - k]) % MOD;
-  return (1LL * fat[n] * den) % MOD;
+int combination(const int set_size, const int subset_size, const int MOD,
+                const std::vector<int> &fat, const std::vector<int> &fat_inv) {
+  if (subset_size < 0 or subset_size > set_size) {
+    return 0;
+  }
+  const int num = fat[set_size];
+  const int den =
+      (1LL * fat_inv[set_size - subset_size] * fat_inv[subset_size]) % MOD;
+  return (1LL * num * den) % MOD;
 }
 
 vector<vector<int> > combination_build(const auto &N, const auto &MOD) {
