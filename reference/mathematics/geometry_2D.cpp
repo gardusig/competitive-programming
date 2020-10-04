@@ -5,24 +5,22 @@ const double EPS = 1e-9;
 
 // point and vector class
 class pv {
-public:
-
+ public:
   double x, y;
 
   pv();
   pv(const double &x, const double &y);
-  pv operator + (const pv &other) const;
-  pv operator - (const pv &other) const;
-  pv operator * (const double &k) const;
-  pv operator / (const double &k) const;
-  bool operator < (const pv &other) const;
-  bool operator == (const pv &other) const;
+  pv operator+(const pv &other) const;
+  pv operator-(const pv &other) const;
+  pv operator*(const double &k) const;
+  pv operator/(const double &k) const;
+  bool operator<(const pv &other) const;
+  bool operator==(const pv &other) const;
 };
 
 // line, ray and segment class
 class lrs {
-public:
-
+ public:
   double a, b, c;
   pv start, finish, direction;
 
@@ -33,47 +31,46 @@ public:
 
 // circle class
 class circle {
-public:
-
+ public:
   pv C;
   double r;
 
-  circle () {}
-  circle (const pv &C, const double &r);
+  circle() {}
+  circle(const pv &C, const double &r);
 };
 
 // 2D geometry namespace
 namespace _2D {
-  double angle(const pv &A, const pv &O, const pv &B);
-  double convert_degree_to_radian(const double &degree);
-  double convert_radian_to_degree(const double &radian);
-  double cross(const pv &A, const pv &B);
-  double dot(const pv &A, const pv &B);
-  double norm(const pv &P);
-  pv perpendicular(const pv &P);
-  pv rotate(const pv &P, const double &rad);
-  pv unit(const pv &P);
-  lrs bisector(const pv &A, const pv &O, const pv &B);
-  double distance_line_line(const lrs &l1, const lrs &l2);
-  double distance_point_line(const pv &point, const lrs &line);
-  double distance_point_ray(const pv &point, const lrs &ray);
-  double distance_point_segment(const pv &point, const lrs &segment);
-  double distance_ray_ray(const lrs &r1, const lrs &r2);
-  double distance_ray_line(const lrs &ray, const lrs &line);
-  double distance_segment_segment(const lrs &s1, const lrs &s2);
-  double distance_segment_ray(const lrs &segment, const lrs &ray);
-  double distance_segment_line(const lrs &segment, const lrs &line);
-  vector< pv > line_line_intersect(const lrs &l1, const lrs &l2);
-  bool point_inside_line(const pv &point, const lrs &line);
-  bool point_inside_ray(const pv &point, const lrs &ray);
-  bool point_inside_segment(const pv &point, const lrs &segment);
-  vector< pv > circle_circle_intersection(const circle &c1, const circle &c2);
-  vector< pv > circle_line_intersection(const circle &_circle, const lrs &line);
-  pv circle_inside_triangle_center(const pv &A, const pv &B, const pv &C);
-  double circle_outside_triangle_radius(const pv &A, const pv &B, const pv &C);
-  bool point_inside_circle(const pv &P, const circle &_circle);
-  vector< pv > build_convex_hull(const vector< pv > &points);
-}
+double angle(const pv &A, const pv &O, const pv &B);
+double convert_degree_to_radian(const double &degree);
+double convert_radian_to_degree(const double &radian);
+double cross(const pv &A, const pv &B);
+double dot(const pv &A, const pv &B);
+double norm(const pv &P);
+pv perpendicular(const pv &P);
+pv rotate(const pv &P, const double &rad);
+pv unit(const pv &P);
+lrs bisector(const pv &A, const pv &O, const pv &B);
+double distance_line_line(const lrs &l1, const lrs &l2);
+double distance_point_line(const pv &point, const lrs &line);
+double distance_point_ray(const pv &point, const lrs &ray);
+double distance_point_segment(const pv &point, const lrs &segment);
+double distance_ray_ray(const lrs &r1, const lrs &r2);
+double distance_ray_line(const lrs &ray, const lrs &line);
+double distance_segment_segment(const lrs &s1, const lrs &s2);
+double distance_segment_ray(const lrs &segment, const lrs &ray);
+double distance_segment_line(const lrs &segment, const lrs &line);
+vector<pv> line_line_intersect(const lrs &l1, const lrs &l2);
+bool point_inside_line(const pv &point, const lrs &line);
+bool point_inside_ray(const pv &point, const lrs &ray);
+bool point_inside_segment(const pv &point, const lrs &segment);
+vector<pv> circle_circle_intersection(const circle &c1, const circle &c2);
+vector<pv> circle_line_intersection(const circle &_circle, const lrs &line);
+pv circle_inside_triangle_center(const pv &A, const pv &B, const pv &C);
+double circle_outside_triangle_radius(const pv &A, const pv &B, const pv &C);
+bool point_inside_circle(const pv &P, const circle &_circle);
+vector<pv> build_convex_hull(const vector<pv> &points);
+}  // namespace _2D
 
 pv::pv() {}
 
@@ -82,21 +79,13 @@ pv::pv(const double &x, const double &y) {
   this->y = y;
 }
 
-pv pv::operator + (const pv &other) const {
-  return pv(x + other.x, y + other.y);
-}
+pv pv::operator+(const pv &other) const { return pv(x + other.x, y + other.y); }
 
-pv pv::operator - (const pv &other) const {
-  return pv(x - other.x, y - other.y);
-}
+pv pv::operator-(const pv &other) const { return pv(x - other.x, y - other.y); }
 
-pv pv::operator * (const double &k) const {
-  return pv(x * k, y * k);
-}
+pv pv::operator*(const double &k) const { return pv(x * k, y * k); }
 
-pv pv::operator / (const double &k) const {
-  return pv(x / k, y / k);
-}
+pv pv::operator/(const double &k) const { return pv(x / k, y / k); }
 
 // bool pv::operator < (const pv &other) const {
 //   if (x != other.x) {
@@ -105,7 +94,7 @@ pv pv::operator / (const double &k) const {
 //   return x < other.x;
 // }
 
-bool pv::operator < (const pv &other) const {
+bool pv::operator<(const pv &other) const {
   double cross = _2D::cross(*this, other);
   if (cross > 0) {
     return true;
@@ -122,7 +111,7 @@ bool pv::operator < (const pv &other) const {
   return _2D::norm(*this) < _2D::norm(other);
 }
 
-bool pv::operator == (const pv &other) const {
+bool pv::operator==(const pv &other) const {
   return fabs(x - other.x) + fabs(y - other.y) < EPS;
 }
 
@@ -161,7 +150,8 @@ lrs::lrs(const double &a, const double &b, const double &c) {
 double _2D::angle(const pv &A, const pv &O, const pv &B) {
   pv C = A - O, D = B - O;
   // if (_2D::cross(C, D) > 0)
-  //   return acos(-1) * 2.0 - acos(_2D::dot(C, D) / (_2D::norm(C) * _2D::norm(D)));
+  //   return acos(-1) * 2.0 - acos(_2D::dot(C, D) / (_2D::norm(C) *
+  //   _2D::norm(D)));
   return acos(_2D::dot(C, D) / (_2D::norm(C) * norm(D)));
 }
 
@@ -177,25 +167,18 @@ double _2D::cross(const pv &A, const pv &B) {
   return (A.x * B.y) - (A.y * B.x);
 }
 
-double _2D::dot(const pv &A, const pv &B) {
-  return (A.x * B.x) + (A.y * B.y);
-}
+double _2D::dot(const pv &A, const pv &B) { return (A.x * B.x) + (A.y * B.y); }
 
-double _2D::norm(const pv &P) {
-  return sqrt(_2D::dot(P, P));
-}
+double _2D::norm(const pv &P) { return sqrt(_2D::dot(P, P)); }
 
-pv _2D::perpendicular(const pv &P) {
-  return pv(-P.y, P.x);
-}
+pv _2D::perpendicular(const pv &P) { return pv(-P.y, P.x); }
 
 pv _2D::rotate(const pv &P, const double &rad) {
-  return pv((P.x * cos(rad)) - (P.y * sin(rad)), (P.x * sin(rad)) + (P.y * cos(rad)));
+  return pv((P.x * cos(rad)) - (P.y * sin(rad)),
+            (P.x * sin(rad)) + (P.y * cos(rad)));
 }
 
-pv _2D::unit(const pv &P) {
-  return P / _2D::norm(P);
-}
+pv _2D::unit(const pv &P) { return P / _2D::norm(P); }
 
 lrs _2D::bisector(const pv &A, const pv &O, const pv &B) {
   pv X = (A - O);
@@ -203,14 +186,15 @@ lrs _2D::bisector(const pv &A, const pv &O, const pv &B) {
   if (_2D::cross(X, Y) != 0) {
     return lrs(O, O + (_2D::unit(X) + _2D::unit(Y)));
   }
-  if ((X.x < 0 and Y.x >= 0) or (X.x >= 0 and Y.x < 0) or (X.y < 0 and Y.y >= 0) or (X.y >= 0 and Y.y < 0)) {
+  if ((X.x < 0 and Y.x >= 0) or (X.x >= 0 and Y.x < 0) or
+      (X.y < 0 and Y.y >= 0) or (X.y >= 0 and Y.y < 0)) {
     return lrs(O, O + _2D::perpendicular(X));
   }
   return lrs(O, O + X);
 }
 
 double _2D::distance_line_line(const lrs &l1, const lrs &l2) {
-  const vector< pv > intersection = _2D::line_line_intersect(l1, l2);
+  const vector<pv> intersection = _2D::line_line_intersect(l1, l2);
   if (intersection.empty() == false) {
     return 0.0;
   }
@@ -218,7 +202,8 @@ double _2D::distance_line_line(const lrs &l1, const lrs &l2) {
 }
 
 double _2D::distance_point_line(const pv &point, const lrs &line) {
-  return fabs(_2D::cross(point - line.start, line.direction)) / _2D::norm(line.direction);
+  return fabs(_2D::cross(point - line.start, line.direction)) /
+         _2D::norm(line.direction);
 }
 
 double _2D::distance_point_ray(const pv &point, const lrs &ray) {
@@ -239,8 +224,10 @@ double _2D::distance_point_segment(const pv &point, const lrs &segment) {
 }
 
 double _2D::distance_ray_ray(const lrs &r1, const lrs &r2) {
-  const vector< pv > intersection = _2D::line_line_intersect(r1, r2);
-  if (intersection.empty() == false and _2D::point_inside_ray(intersection[0], r1) == true and _2D::point_inside_ray(intersection[0], r2) == true) {
+  const vector<pv> intersection = _2D::line_line_intersect(r1, r2);
+  if (intersection.empty() == false and
+      _2D::point_inside_ray(intersection[0], r1) == true and
+      _2D::point_inside_ray(intersection[0], r2) == true) {
     return 0.0;
   }
   double ans = LLONG_MAX;
@@ -250,16 +237,19 @@ double _2D::distance_ray_ray(const lrs &r1, const lrs &r2) {
 }
 
 double _2D::distance_ray_line(const lrs &ray, const lrs &line) {
-  const vector< pv > intersection = _2D::line_line_intersect(ray, line);
-  if (intersection.empty() == false and _2D::point_inside_ray(intersection[0], ray) == true) {
+  const vector<pv> intersection = _2D::line_line_intersect(ray, line);
+  if (intersection.empty() == false and
+      _2D::point_inside_ray(intersection[0], ray) == true) {
     return 0.0;
   }
   return _2D::distance_point_line(ray.start, line);
 }
 
 double _2D::distance_segment_segment(const lrs &s1, const lrs &s2) {
-  const vector< pv > intersection = _2D::line_line_intersect(s1, s2);
-  if (intersection.empty() == false and _2D::point_inside_segment(intersection[0], s1) == true and _2D::point_inside_segment(intersection[0], s2) == true) {
+  const vector<pv> intersection = _2D::line_line_intersect(s1, s2);
+  if (intersection.empty() == false and
+      _2D::point_inside_segment(intersection[0], s1) == true and
+      _2D::point_inside_segment(intersection[0], s2) == true) {
     return 0.0;
   }
   double ans = LLONG_MAX;
@@ -271,8 +261,10 @@ double _2D::distance_segment_segment(const lrs &s1, const lrs &s2) {
 }
 
 double _2D::distance_segment_ray(const lrs &segment, const lrs &ray) {
-  const vector< pv > intersection = _2D::line_line_intersect(segment, ray);
-  if (intersection.empty() == false and _2D::point_inside_segment(intersection[0], segment) == true and _2D::point_inside_ray(intersection[0], ray) == true)
+  const vector<pv> intersection = _2D::line_line_intersect(segment, ray);
+  if (intersection.empty() == false and
+      _2D::point_inside_segment(intersection[0], segment) == true and
+      _2D::point_inside_ray(intersection[0], ray) == true)
     return 0.0;
   double ans = LLONG_MAX;
   ans = min(ans, _2D::distance_point_ray(segment.start, ray));
@@ -283,7 +275,8 @@ double _2D::distance_segment_ray(const lrs &segment, const lrs &ray) {
 
 double _2D::distance_segment_line(const lrs &segment, const lrs &line) {
   vector<pv> intersection = _2D::line_line_intersect(segment, line);
-  if (int(intersection.size()) and _2D::point_inside_segment(intersection[0], segment))
+  if (int(intersection.size()) and
+      _2D::point_inside_segment(intersection[0], segment))
     return 0.0;
   double ans = LLONG_MAX;
   ans = min(ans, _2D::distance_point_line(segment.start, line));
@@ -291,8 +284,8 @@ double _2D::distance_segment_line(const lrs &segment, const lrs &line) {
   return ans;
 }
 
-vector< pv > _2D::line_line_intersect(const lrs &l1, const lrs &l2) {
-  vector< pv > ans;
+vector<pv> _2D::line_line_intersect(const lrs &l1, const lrs &l2) {
+  vector<pv> ans;
   double den = _2D::cross(l1.direction, l2.direction);
   if (fabs(den) < EPS) {
     return ans;
@@ -332,8 +325,8 @@ bool _2D::point_inside_segment(const pv &point, const lrs &segment) {
   return true;
 }
 
-vector< pv > _2D::circle_circle_intersection(const circle &c1, const circle &c2) {
-  vector< pv > ans;
+vector<pv> _2D::circle_circle_intersection(const circle &c1, const circle &c2) {
+  vector<pv> ans;
   double d = _2D::norm(c1.C - c2.C);
   if (d > c1.r + c2.r or d < fabs(c1.r - c2.r)) {
     return ans;
@@ -354,13 +347,15 @@ vector< pv > _2D::circle_circle_intersection(const circle &c1, const circle &c2)
   return ans;
 }
 
-vector< pv > _2D::circle_line_intersection(const circle &_circle, const lrs &line) {
-  vector< pv > ans;
+vector<pv> _2D::circle_line_intersection(const circle &_circle,
+                                         const lrs &line) {
+  vector<pv> ans;
   double h = _2D::distance_point_line(_circle.C, line);
   if (h > _circle.r) {
     return ans;
   }
-  pv P = _2D::line_line_intersect(line, lrs(_circle.C, _circle.C + _2D::perpendicular(line.direction)))[0];
+  pv P = _2D::line_line_intersect(
+      line, lrs(_circle.C, _circle.C + _2D::perpendicular(line.direction)))[0];
   double delta = sqrt(_circle.r * _circle.r - h * h);
   if (delta < EPS) {
     ans.push_back(P);
@@ -378,7 +373,8 @@ pv _2D::circle_inside_triangle_center(const pv &A, const pv &B, const pv &C) {
   return _2D::line_line_intersect(l1, l2)[0];
 }
 
-double _2D::circle_outside_triangle_radius(const pv &A, const pv &B, const pv &C) {
+double _2D::circle_outside_triangle_radius(const pv &A, const pv &B,
+                                           const pv &C) {
   double ab = _2D::norm(A - B);
   double bc = _2D::norm(B - C);
   double ca = _2D::norm(C - A);
@@ -390,7 +386,7 @@ bool _2D::point_inside_circle(const pv &P, const circle &_circle) {
   return _2D::norm(P - _circle.C) <= _circle.r;
 }
 
-vector< pv > _2D::build_convex_hull(const vector< pv > &points) {
+vector<pv> _2D::build_convex_hull(const vector<pv> &points) {
   auto v = points;
   int idx = 0;
   for (int i = 1; i < int(v.size()); i += 1) {
@@ -406,7 +402,7 @@ vector< pv > _2D::build_convex_hull(const vector< pv > &points) {
   for (int i = 1; i < int(v.size()); i += 1) {
     v[i] = (v[i] + v[0]);
   }
-  stack< pv > st;
+  stack<pv> st;
   for (int i = 1; i < int(v.size()); i += 1) {
     if (st.empty() == true) {
       if (_2D::cross(v[i] - v[0], v[(i + 1) % int(v.size())] - v[0]) != 0) {
@@ -417,8 +413,10 @@ vector< pv > _2D::build_convex_hull(const vector< pv > &points) {
     } else {
       pv A = v[i];
       while (int(st.size()) > 2) {
-        pv B = st.top(); st.pop();
-        pv O = st.top(); st.pop();
+        pv B = st.top();
+        st.pop();
+        pv O = st.top();
+        st.pop();
         if (_2D::cross(A - O, B - O) < 0) {
           st.push(O);
           st.push(B);
