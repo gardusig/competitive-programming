@@ -1,9 +1,8 @@
-# Profiles
-* [CodeChef](https://www.codechef.com/users/gustavogardusi)
-* [Codeforces](https://codeforces.com/profile/gustavo.gardusi)
+# Competitive Programming
 
-## reference
-Everything I use as reference during a competition
+Everything I use as reference during a contest.
 
-## solutions
-Accepted solutions from competitions I took part
+## Online Judge Profiles
+
+- [CodeChef](https://www.codechef.com/users/gustavogardusi)
+- [Codeforces](https://codeforces.com/profile/binaryLifter)
