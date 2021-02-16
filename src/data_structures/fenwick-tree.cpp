@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include <vector>
 
 template <typename T>
@@ -33,7 +34,7 @@ void FenwickTree<T>::reset() {
 template <typename T>
 void FenwickTree<T>::resize(const int size) {
   if (size < 0) {
-    std::__throw_invalid_argument("size should not be negative");
+    throw std::invalid_argument("size should not be negative");
   }
   this->accum.resize(size);
 }
@@ -41,7 +42,7 @@ void FenwickTree<T>::resize(const int size) {
 template <typename T>
 void FenwickTree<T>::update(const int idx, const T value) {
   if (idx <= 0) {
-    std::__throw_invalid_argument("idx should be positive");
+    throw std::invalid_argument("idx should be positive");
   }
   for (int i = idx; i < int(accum.size()); i += i & (-i)) {
     this->accum[i] += value;
@@ -51,7 +52,7 @@ void FenwickTree<T>::update(const int idx, const T value) {
 template <typename T>
 T FenwickTree<T>::query(const int idx) const {
   if (idx >= this->accum.size()) {
-    std::__throw_out_of_range("idx out of range");
+    throw std::out_of_range("idx out of range");
   }
   T ans = 0;
   for (int i = idx; i > 0; i -= i & (-i)) {
