@@ -43,33 +43,34 @@ int combination(const int set_size, const int subset_size,
   return (1LL * num * den) % MOD;
 }
 
-std::vector<int> build_lowest_divisors(const int MAX_SIZE) {
-  std::vector<int> lowest_divisors(MAX_SIZE);
-  for (int i = 0; i < lowest_divisors.size(); ++i) {
-    lowest_divisors[i] = (i & 1) ? i : 2;
+std::vector<int> get_lowest_factors(const int MAX_SIZE) {
+  std::vector<int> lowest_factors(MAX_SIZE);
+  for (int i = 0; i < lowest_factors.size(); i += 1) {
+    lowest_factors[i] = (i & 1) ? i : 2;
   }
-  for (int prime = 3; prime < lowest_divisors.size(); prime += 2) {
-    if (lowest_divisors[prime] != prime) {
+  for (int prime = 3; prime < lowest_factors.size(); prime += 2) {
+    if (lowest_factors[prime] != prime) {
       continue;
     }
-    for (int multiple = prime; multiple < lowest_divisors.size();
+    for (int multiple = prime; multiple < lowest_factors.size();
          multiple += prime) {
-      if (lowest_divisors[multiple] == prime) {
-        lowest_divisors[multiple] = prime;
+      if (lowest_factors[multiple] != multiple) {
+        continue;
       }
+      lowest_factors[multiple] = prime;
     }
   }
-  return lowest_divisors;
+  return lowest_factors;
 }
 
-// std::unordered_map<int, int> get_factors(
-//     const int N, const std::vector<int> &lowest_divisors) {
-//   std::unordered_map<int, int> factors;
-//   for (int i = N; i > 0; i /= lowest_divisors[i]) {
-//     factors[lowest_divisors[i]] += 1;
-//   }
-//   return factors;
-// }
+std::unordered_map<int, int> get_factors(
+    const int N, const std::vector<int>& lowest_factors) {
+  std::unordered_map<int, int> factors;
+  for (int i = N; i > 1; i /= lowest_factors[i]) {
+    factors[lowest_factors[i]] += 1;
+  }
+  return factors;
+}
 
 // int count_divisors(const int N, const std::vector<int> &lowest_divisors) {
 //   int ans = 1;
@@ -119,5 +120,3 @@ std::vector<int> build_lowest_divisors(const int MAX_SIZE) {
 //   int den = (1 - common_ratio);
 //   return num / den;
 // }
-
-int main() { return 0; }
