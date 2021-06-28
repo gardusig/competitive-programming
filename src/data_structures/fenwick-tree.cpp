@@ -18,6 +18,9 @@ class FenwickTree {
     if (idx <= 0) {
       throw std::invalid_argument("idx should be positive");
     }
+    if (idx >= int(accum.size())) {
+      throw std::out_of_range("idx out of range");
+    }
     for (int i = idx; i < int(accum.size()); i += i & (-i)) {
       this->accum[i] += value;
     }
