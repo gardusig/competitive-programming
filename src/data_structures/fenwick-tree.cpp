@@ -1,9 +1,11 @@
+// Copyright (c) 2020 Gustavo Gardusi
+
 #include <bits/stdc++.h>
 
 template <typename T>
 class FenwickTree {
  public:
-  FenwickTree(const int size) : accum(size, this->DEFAULT_VALUE) {}
+  explicit FenwickTree(const int size) : accum(size, this->DEFAULT_VALUE) {}
 
   void resize(const int size) {
     if (size < 0) {
@@ -18,16 +20,16 @@ class FenwickTree {
     if (idx <= 0) {
       throw std::invalid_argument("idx should be positive");
     }
-    if (idx >= int(accum.size())) {
+    if (idx >= static_cast<int>(accum.size())) {
       throw std::out_of_range("idx out of range");
     }
-    for (int i = idx; i < int(accum.size()); i += i & (-i)) {
+    for (int i = idx; i < static_cast<int>(accum.size()); i += i & (-i)) {
       this->accum[i] += value;
     }
   }
 
   T query(const int idx) const {
-    if (idx >= int(this->accum.size())) {
+    if (idx >= static_cast<int>(this->accum.size())) {
       throw std::out_of_range("idx out of range");
     }
     T ans = 0;
