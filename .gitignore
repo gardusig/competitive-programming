@@ -1,4 +1,5 @@
 a.out
-stdin.txt
+*.txt
 main.cpp
 .vscode
+.DS_Store
