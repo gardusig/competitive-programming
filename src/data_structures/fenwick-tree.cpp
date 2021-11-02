@@ -3,7 +3,7 @@
 template <typename T>
 class FenwickTree {
  public:
-  FenwickTree(const int size) : accum(size, 0) {}
+  explicit FenwickTree(const int size) : accum(size, 0) {}
 
   void clear() { std::fill(accum.begin(), accum.end(), 0); }
 
