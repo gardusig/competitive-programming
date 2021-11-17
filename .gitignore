@@ -1,5 +1,8 @@
+build/
+
+.vscode
+.DS_Store
+
 a.out
 *.txt
 main.cpp
-.vscode
-.DS_Store
