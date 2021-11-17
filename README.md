@@ -18,3 +18,13 @@ g++-11 \
     -Wall \
     -Wl,-stack_size -Wl,10000000 \
 ```
+
+## CMake
+
+### macOS
+```shell
+$ mkdir build
+$ cd build/
+$ cmake -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-11 ../
+$ make
+```
