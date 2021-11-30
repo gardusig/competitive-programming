@@ -23,8 +23,8 @@ g++-11 \
 
 ### macOS
 ```shell
-$ mkdir build
-$ cd build/
-$ cmake -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-11 ../
-$ make
+mkdir build
+cd build/
+cmake -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-11 ../
+make
 ```
