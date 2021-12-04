@@ -22,9 +22,15 @@ g++-11 \
 ## CMake
 
 ### macOS
+
+#### Build
 ```shell
-mkdir build
-cd build/
-cmake -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-11 ../
+rm -rf build && mkdir build && cd build
+cmake -D CMAKE_CXX_COMPILER=g++-11 /usr/local/bin ../
 make
+```
+
+#### Run unit tests
+```sh
+ctest
 ```
