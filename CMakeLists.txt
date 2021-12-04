@@ -3,4 +3,5 @@ project(competitive_programming)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_subdirectory("tst")
+include(CTest)
+add_subdirectory(tst)
