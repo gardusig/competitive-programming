@@ -18,3 +18,19 @@ g++-11 \
     -Wall \
     -Wl,-stack_size -Wl,10000000 \
 ```
+
+## CMake
+
+### macOS
+
+#### Build
+```shell
+rm -rf build && mkdir build && cd build
+cmake -D CMAKE_CXX_COMPILER=g++-11 /usr/local/bin ../
+make
+```
+
+#### Run unit tests
+```sh
+ctest
+```
