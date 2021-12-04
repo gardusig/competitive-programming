@@ -1,8 +1,10 @@
-build/
-
-.vscode
+_deps/
 .DS_Store
-
-a.out
-*.txt
-main.cpp
+.vscode
+bin/
+build/
+cmake_install.cmake
+CMakeCache.txt
+CMakeFiles/
+lib/
+Makefile
