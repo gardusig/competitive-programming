@@ -22,69 +22,72 @@ class Width:
 
 class Height:
     def __init__(self):
-        INF = 11234567891234
+        self.remove_queue_index = 0
         self.remove_queue = []
-        heapq.heappush(self.remove_queue, (INF, 0))
-        self.highest = 0
         self.highest_queue = []
-        heapq.heappush(self.highest_queue, -self.highest)
-        self.frequency = {0: 1}
-        self.total = 0
+        heapq.heappush(self.highest_queue, 0)
+        self.frequency = {
+            0: 112345678912345
+        }
+        self.previous_peaks = 0
 
     def join(self, L: int, R: int, H: int) -> None:
         self.__remove_finished(L)
-        heapq.heappush(self.remove_queue, (R, H))
+        self.remove_queue.append((R, H))
+        previous_highest = self.__get_highest()
         if H not in self.frequency:
             self.frequency[H] = 0
+        if self.frequency[H] == 0:
             heapq.heappush(self.highest_queue, -H)
         self.frequency[H] += 1
-        if H > self.highest:
-            self.total += H - self.highest
-            self.highest = H
+        if H > previous_highest:
+            self.previous_peaks += H - previous_highest
 
     def get(self) -> int:
-        return self.total + self.highest
+        return self.previous_peaks + self.__get_highest()
 
     def __remove_finished(self, start_index: int) -> None:
-        while True:
-            idx, H = heapq.heappop(self.remove_queue)
+        while self.remove_queue_index < len(self.remove_queue):
+            idx, H = self.remove_queue[self.remove_queue_index]
             if idx >= start_index:
-                heapq.heappush(self.remove_queue, (idx, H))
                 break
             self.frequency[H] -= 1
-        previous = self.highest
-        flag = False
-        while self.frequency[self.highest] < 1:
-            flag = True
-            self.highest = -heapq.heappop(self.highest_queue)
-        if flag:
-            heapq.heappush(self.highest_queue, -self.highest)
-            self.total += previous - self.highest
+            self.remove_queue_index += 1
+        previous_highest = self.__get_highest()
+        while self.frequency[self.__get_highest()] < 1:
+            heapq.heappop(self.highest_queue)
+        self.previous_peaks += previous_highest - self.__get_highest()
+
+    def __get_highest(self) -> int:
+        return -self.highest_queue[0]
 
 
 class Polygon:
-    def __init__(self):
-        self.perimeter_total = 0
-
-    def solve(self, N: int, W: int, L: List[int], H: List[int]) -> int:
-        self.width = Width(L[0])
+    def __init__(self, L: int):
+        self.width = Width(L)
         self.height = Height()
-        ans = 1
-        for i in range(N):
-            if not self.width.has_collision(L[i], L[i] + W):
-                self.perimeter_total += self.get_current_perimeter()
-                self.width = Width(L[i])
-                self.height = Height()
-            self.width.join(L[i] + W)
-            self.height.join(L[i], L[i] + W, H[i])
-            total = (self.perimeter_total + self.get_current_perimeter()) % MOD
-            ans = (ans * total) % MOD
-        return ans
 
     def get_current_perimeter(self) -> None:
         width = self.width.get()
         height = self.height.get()
         return width + height
+
+
+def solve(N: int, W: int, L: List[int], H: List[int]) -> int:
+    polygons = []
+    polygon = Polygon(L=L[0])
+    ans = 1
+    previous_perimeters = 0
+    for i in range(N):
+        if not polygon.width.has_collision(L[i], L[i] + W):
+            previous_perimeters += polygon.get_current_perimeter()
+            polygons.append(polygon)
+            polygon = Polygon(L=L[i])
+        polygon.width.join(L[i] + W)
+        polygon.height.join(L[i], L[i] + W, H[i])
+        perimeter = previous_perimeters + polygon.get_current_perimeter()
+        ans = (ans * (perimeter % MOD)) % MOD
+    return ans
 
 
 def run_test(test_id: int) -> None:
@@ -99,8 +102,7 @@ def run_test(test_id: int) -> None:
     for i in range(K, N):
         nxt_h = ((((AH * H[i - 2]) + (BH * H[i - 1]) + CH)) % DH) + 1
         H.append(nxt_h)
-    polygon = Polygon()
-    ans = polygon.solve(N, W, L, H)
+    ans = solve(N, W, L, H)
     print(f'Case #{test_id}: {ans}')
 
 
