@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 
 void solve_test_case(const int test_case) {
-  std::cout << "implement your solution here :)" << std::endl;
+  std::cout << "Go ahead and start implementing your solution here :)"
+            << std::endl;
 }
 
 int main() {
