@@ -151,6 +151,16 @@ void testXOR() {
   assert(tree.query(0, 0) == 1);
   assert(tree.query(0, 1) == 0);
   assert(tree.query(0, 2) == 1);
+  tree.updateRange(0, 9, 1);
+  assert(tree.query(0, 9) == 0);
+  assert(tree.query(0, 0) == 0);
+  assert(tree.query(0, 1) == 0);
+  assert(tree.query(0, 2) == 0);
+  tree.updateRange(0, 9, 16);
+  assert(tree.query(0, 9) == 0);
+  assert(tree.query(0, 0) == 16);
+  assert(tree.query(0, 1) == 0);
+  assert(tree.query(0, 2) == 16);
   std::cout << "Test XOR passed successfully!" << std::endl;
 }
 
