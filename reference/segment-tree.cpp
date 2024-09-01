@@ -141,6 +141,7 @@ void testSUM() {
   assert(tree.query(0, 3) == 24);
   assert(tree.query(4, 4) == 5);
   assert(tree.query(0, 9) == 29);
+  std::cout << "Test SUM passed successfully!" << std::endl;
 }
 
 void testXOR() {
@@ -150,13 +151,12 @@ void testXOR() {
   assert(tree.query(0, 0) == 1);
   assert(tree.query(0, 1) == 0);
   assert(tree.query(0, 2) == 1);
+  std::cout << "Test XOR passed successfully!" << std::endl;
 }
 
 int main() {
   testSUM();
-  std::cout << "Test SUM passed successfully!" << std::endl;
   testXOR();
-  std::cout << "Test XOR passed successfully!" << std::endl;
   std::cout << "All tests passed successfully!" << std::endl;
   return 0;
 }
