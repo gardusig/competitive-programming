@@ -4,13 +4,8 @@ namespace SegmentTree {
 
 template <typename T>
 class AbstractHelper {
- protected:
-  AbstractHelper(T defaultValue) : DEFAULT_VALUE(defaultValue) {}
-  virtual ~AbstractHelper() = default;
-
  public:
-  const T DEFAULT_VALUE;
-
+  virtual T getDefaultValue() const = 0;
   virtual T mergeValues(const T valueA, const T valueB) const = 0;
   virtual T mergeValuesInRange(const T currentValue, const T lazyValue,
                                const int L, const int R) const = 0;
@@ -22,8 +17,8 @@ class SegmentTree {
   SegmentTree(const int size, const AbstractHelper<T>& helper)
       : SIZE(size),
         HELPER(helper),
-        tree(4 * size, helper.DEFAULT_VALUE),
-        lazy(4 * size, helper.DEFAULT_VALUE) {}
+        tree(4 * size, helper.getDefaultValue()),
+        lazy(4 * size, helper.getDefaultValue()) {}
 
   void updateRange(const int L, const int R, const T value) {
     updateRange(1, 0, SIZE - 1, L, R, value);
@@ -54,7 +49,7 @@ class SegmentTree {
           const int rangeR) {
     propagate(treeIndex, start, end);
     if (start > rangeR || end < rangeL) {
-      return HELPER.DEFAULT_VALUE;
+      return HELPER.getDefaultValue();
     }
     if (start >= rangeL && end <= rangeR) {
       return tree[treeIndex];
@@ -66,7 +61,7 @@ class SegmentTree {
   }
 
   void propagate(int treeIndex, int start, int end) {
-    if (lazy[treeIndex] == HELPER.DEFAULT_VALUE) {
+    if (lazy[treeIndex] == HELPER.getDefaultValue()) {
       return;
     }
     tree[treeIndex] =
@@ -78,7 +73,7 @@ class SegmentTree {
       lazy[2 * treeIndex + 1] =
           HELPER.mergeValues(lazy[2 * treeIndex + 1], lazy[treeIndex]);
     }
-    lazy[treeIndex] = HELPER.DEFAULT_VALUE;
+    lazy[treeIndex] = HELPER.getDefaultValue();
   }
 
   const int SIZE;
@@ -91,8 +86,6 @@ class SegmentTree {
 template <typename T>
 class SUM : public AbstractHelper<T> {
  public:
-  SUM() : AbstractHelper<T>(T(0)) {}
-
   T mergeValues(const T valueA, const T valueB) const override {
     return valueA + valueB;
   }
@@ -101,13 +94,13 @@ class SUM : public AbstractHelper<T> {
                        const int R) const override {
     return currentValue + (lazyValue * (R - L + 1));
   }
+
+  T getDefaultValue() const override { return 0; }
 };
 
 template <typename T>
 class XOR : public AbstractHelper<T> {
  public:
-  XOR() : AbstractHelper<T>(0) {}
-
   T mergeValues(const T valueA, const T valueB) const override {
     return valueA ^ valueB;
   }
@@ -116,6 +109,8 @@ class XOR : public AbstractHelper<T> {
                        const int R) const override {
     return currentValue ^ (lazyValue * ((R - L + 1) & 1));
   }
+
+  T getDefaultValue() const override { return 0; }
 };
 }  // namespace SegmentTree
 

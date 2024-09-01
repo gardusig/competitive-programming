@@ -13,4 +13,8 @@ int read_integer() {
   return N;
 }
 
-int main() { return 0; }
+void shuffle(std::vector<int>& v) {
+  std::mt19937 rng(
+      int(std::chrono::steady_clock::now().time_since_epoch().count()));
+  std::shuffle(v.begin(), v.end(), rng);
+}
