@@ -12,25 +12,9 @@ Everything I use as reference during a contest.
 ### C++
 
 ```shell
-g++-11 \
-    -std=c++17 \
+g++-14 \
+    -std=c++23 \
     -O3 \
     -Wall \
     -Wl,-stack_size -Wl,10000000 \
-```
-
-## CMake
-
-### macOS
-
-#### Build
-```shell
-rm -rf build && mkdir build && cd build
-cmake -D CMAKE_CXX_COMPILER=g++-11 /usr/local/bin ../
-make
-```
-
-#### Run unit tests
-```sh
-ctest
 ```
