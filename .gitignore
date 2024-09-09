@@ -1,3 +1,4 @@
 *.out
 *.txt
 main.cpp
+.DS_Store
