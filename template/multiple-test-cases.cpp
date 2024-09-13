@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-void solve_test_case() {}
+void processTestCase() {}
 
 int main() {
   std::ios_base::sync_with_stdio(0);
@@ -9,7 +9,7 @@ int main() {
   int tests;
   std::cin >> tests;
   for (int test = 0; test < tests; test += 1) {
-    solve_test_case();
+    processTestCase();
   }
   return 0;
 }
