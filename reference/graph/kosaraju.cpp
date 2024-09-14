@@ -49,7 +49,7 @@ void buildKosaraju(int _n, const vector<pair<int, int>>& edges) {
   }
   // Step 2: Perform DFS on the transposed graph in reverse finish order
   memset(used, false, sizeof used);
-  sccs.clear();                 // Clear previous SCCs
+  sccs.clear();  // Clear previous SCCs
 
   while (!aux.empty()) {
     int v = aux.top();
