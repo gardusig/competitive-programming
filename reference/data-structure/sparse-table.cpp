@@ -67,11 +67,9 @@ auto mergeGcd = [](int a, int b) { return std::gcd(a, b); };
 int main() {
   // Example usage: constructing a SparseTable with the bitwise OR operation.
   std::vector<int> v = {1, 2, 4, 8, 16, 32, 64, 128};
-
   // Construct the sparse table using the bitwise OR merge function.
   sparse::SparseTable<int, decltype(sparse::mergeOr)> sparseTable(
       v, sparse::mergeOr);
-
   // Test cases to validate the correctness of the SparseTable.
   assert(sparseTable.query(0, 0) == 1);  // Query range [0, 0], expect 1.
   assert(sparseTable.query(0, 2) ==
@@ -81,9 +79,6 @@ int main() {
          255);  // Query range [0, 7], expect 1 | 2 | ... | 128 = 255.
   assert(sparseTable.query(1, 3) ==
          14);  // Query range [1, 3], expect 2 | 4 | 8 = 14.
-
-  // Output a success message if all tests pass.
   std::cout << "All tests passed!" << std::endl;
-
   return 0;
 }

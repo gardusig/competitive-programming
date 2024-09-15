@@ -223,7 +223,6 @@ void testXOR() {
 int main() {
   testSUM();  // Run the test for SUM operations.
   testXOR();  // Run the test for XOR operations.
-
   std::cout << "All tests passed successfully!" << std::endl;
   return 0;
 }
