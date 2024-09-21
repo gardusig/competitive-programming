@@ -2,3 +2,4 @@
 *.txt
 main.cpp
 .DS_Store
+.vscode/
