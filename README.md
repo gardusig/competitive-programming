@@ -11,8 +11,8 @@ Welcome to my Competitive Programming Repository! This repository contains a col
 
 ## Directory Structure
 
-- **`reference/`**: Contains implementations of various algorithms and data structures.
-- **`solutions/`**: Contains solutions for various competitive programming contests.
+- **`reference/`**: Implementations of various algorithms and data structures.
+- **`solutions/`**: Solutions for various competitive programming contests.
 - **`template/`**: Code templates and files used for competitive programming contests.
 
 ## Compile options
