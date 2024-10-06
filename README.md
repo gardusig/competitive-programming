@@ -1,7 +1,3 @@
-# Competitive Programming Repository
-
-Welcome to my Competitive Programming Repository! This repository contains a collection of code, algorithms, and solutions that I've developed over the years for competitive programming. Here's a quick overview of the directory structure and contents:
-
 ## Achievements
 - **[CodeChef](https://www.codechef.com/users/gardusig):** 1st Division.
 - **[Codeforces](https://codeforces.com/profile/gardusig):** 1st Division.
